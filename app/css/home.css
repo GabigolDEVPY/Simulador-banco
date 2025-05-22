@@ -34,8 +34,8 @@ body {
     background-color: #761f75;
     display: flex;
     justify-content: space-between;
-    width: 100%;
     height: 100px;
+    width: 420px;
     padding: 10px;
     box-sizing: border-box;
     gap: 10px;
@@ -88,12 +88,17 @@ body {
 }
 
 .meio-resto {
-    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    background-color: #300827;
 }
 
 .infos {
+    display: flex;
+    flex-direction: column;
     font-size: 20px;
-    background-color: #030303;
     height: 200px;
     width: 400px;
     box-sizing: border-box;
@@ -101,11 +106,11 @@ body {
 }
 
 .options-box {
-    height: 80px;
+    height: 90px;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    background-color: #300827;
+    gap: 10px;
     
 
 }
@@ -117,5 +122,44 @@ body {
     background-color:#4b0049;
     border: none;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
 }
 
+.options-button:hover {
+    transform: scale(1.1);
+}
+
+.options-button img {
+    width: 40pxpx;
+    height: 40px;
+}
+
+.emprestimo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    width: 420px;
+    background-color: #761f75;
+    border: none;
+    box-sizing: border-box;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.infos-emprestimo {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 80px;
+    width: 220px;
+    text-align: left;
+}
+
+.final {
+    margin-top: 20px;
+    gap: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+}

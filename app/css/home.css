@@ -171,3 +171,34 @@ body {
     flex-direction: column;
     justify-content:flex-start;
 }
+
+.button-superior {
+    margin-top: 10px;
+    height: 40px;
+    width: 40px;
+    background-color: #ffffff;
+    background-image: url("../imgs/left-arrow.png");
+    background-size: cover;
+}
+
+.button-notify {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90px;
+    width: 420px;
+    background-color: #761f75;
+    border: none;
+    box-sizing: border-box;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.info-notify {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    height: 80px;
+    width: 220px;
+    text-align: left;
+}

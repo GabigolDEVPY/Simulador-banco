@@ -202,3 +202,60 @@ body {
     width: 220px;
     text-align: left;
 }
+
+
+.valor {
+    margin-top: 20px;
+}
+
+.money {
+    background-color: #300827;
+    border-top: none ;
+    border-left: none;
+    border-right: none;
+    font-size: 25px;
+    width: 200px;
+    margin-left: 5px;
+    padding-left: 5px;
+}
+
+.valor input:focus {
+    border-bottom: 2px solid white;
+    outline: none;
+}
+
+
+.meio-notify {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    gap: 10px;
+    background-color: #300827;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+/* Para Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+
+/* Para Firefox */
+input[type=number] {
+-moz-appearance: textfield;
+}
+
+.button-transferencia {
+    margin-top: 80px;
+    height: 40px;
+    width: 200px;
+    background-color:#761f75;
+    border: none;
+    font-size: 15px;
+}
+
+.button-transferencia:hover {
+    background-color: #1b0516;
+}

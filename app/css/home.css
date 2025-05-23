@@ -280,3 +280,29 @@ margin: 0;
     background-image: url("../imgs/close.png");
     background-size: cover;
 }
+
+.button-return {
+    margin-top: 15px;
+    height: 25px;
+    width: 25px;
+    background-color: #ffffff;
+    background-image: url("../imgs/left-arrow.png");
+    background-size: cover;
+}
+
+.tela-caixinhas {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    grid-template-columns: 1fr 1fr;
+    width: 400px;
+    height: 400px;
+    background-color: #300827;
+}
+
+.caixinha {
+    height: 170px;
+    width: 170px;
+    background-color: #1b0516;
+    border-radius: 10px;
+}

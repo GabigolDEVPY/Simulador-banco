@@ -11,15 +11,23 @@
     <div class="nav-superior" style="justify-content: flex-start;" >
             <button style="margin-left: 0px;" class="button-superior"></button>
     </div>
-    <div class="meio-notify" style="height: 400px; width: 400px">
+    <div class="meio-notify" style="width: 400px">
         <label style="font-size: 24px">Qual é o valor da <br>
             transferência ?</label>
         <label style="font-weight: normal;">Saldo na conta: </label>
         <div class="valor">
             <label style="font-size: 25px;">R$</label>
-            <input class="money" type="number" placeholder="00,00">
+            <input style="width: 250px;" class="money" type="number" placeholder="00,00">
         </div>
-        <button class="button-transferencia">Transferir</button>
+        <div style="margin-top: 40px;">
+            <label style="font-size: 24px">Qual é a chave do <br>
+                recebedor?</label>
+            <div class="valor">
+                <label style="font-size: 25px;">Chave:</label>
+                <input class="money" type="text" placeholder="ex: 425543gfd">
+            </div>
+            <button class="button-transferencia">Transferir</button>
+        </div>
     </div>
 </body>
 </html>

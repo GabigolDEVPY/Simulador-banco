@@ -295,14 +295,15 @@ margin: 0;
     align-items: center;
     justify-items: center;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
     width: 400px;
     height: 400px;
     background-color: #300827;
 }
 
 .caixinha {
-    height: 170px;
-    width: 170px;
+    height: 180px;
+    width: 180px;
     background-color: #1b0516;
     border-radius: 10px;
 }

@@ -259,3 +259,28 @@ input[type=number] {
 .button-transferencia:hover {
     background-color: #1b0516;
 }
+
+.confirmar {
+    margin-top: 60px;
+    width: 200px;
+    height: 40px;
+    background-color:#761f75;
+    border: none;
+}
+
+.confirmar:hover {
+    background-color: #4b0049;
+}
+
+.meio-notify p{
+    font-weight: normal;
+}
+
+.button-close {
+    margin-top: 15px;
+    height: 25px;
+    width: 25px;
+    background-color: #ffffff;
+    background-image: url("../imgs/close.png");
+    background-size: cover;
+}

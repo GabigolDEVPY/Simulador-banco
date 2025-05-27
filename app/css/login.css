@@ -24,7 +24,7 @@ body {
 }
 
 .caixa-principal {
-    background-color: #471041;
+    background-color: #000000;
     display: flex;
     justify-content:flex-start;
     flex-direction: column;
@@ -54,8 +54,8 @@ body {
 }
 
 .inputs input {
-    background-color: #5f185b;
-    border: none;
+    background-color: #000000;
+    border: 1px solid #300827;
     height: 45px;
     width: 340px;
     font-size: 17px;

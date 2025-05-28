@@ -345,3 +345,22 @@ margin: 0;
     justify-items: flex-start;
 }
 
+.photos {
+    gap: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    margin-top: 40px;
+    min-height: 220px;
+    width: 100%;
+    overflow-x: auto;
+}
+
+.photo {
+    flex: 0 0 auto;
+    height: 170px;
+    width: 170px;
+    border-radius: 10px;
+    background-color: #29002e;
+}

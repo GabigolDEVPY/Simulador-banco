@@ -218,6 +218,9 @@ body {
     margin-left: 5px;
     padding-left: 5px;
 }
+.money:focus {
+    outline: none;
+}
 
 .valor input:focus {
     border-bottom: 2px solid white;

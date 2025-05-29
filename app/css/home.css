@@ -362,5 +362,8 @@ margin: 0;
     height: 170px;
     width: 170px;
     border-radius: 10px;
-    background-color: #29002e;
+    background-size: cover;
+    background-position: center;
+    object-fit: fill;
+    background-color:#300827;
 }

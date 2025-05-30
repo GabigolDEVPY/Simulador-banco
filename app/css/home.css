@@ -383,7 +383,7 @@ margin: 0;
 
 #Modal {
     position: fixed;
-    display: flex;
+    display: none;
     top: 0; left: 0;
     align-items: center;
     justify-content: center;

@@ -27,7 +27,7 @@
                 <input style="width: 250px;" class="money" type="number" placeholder="00,00">
             </div>
             <div style="margin-top: 250px;" class="direction">
-                <button class="confirmar">Comprar</button>
+                <button onclick="abrirModal()" class="confirmar">Comprar</button>
                 <button class="confirmar">Cancelar</button>
             </div>   
         </div>
@@ -39,12 +39,19 @@
             <p style="margin-top: 10px;">Quantidade</p>
             <p style="margin-top: 10px;">Valor</p>
             <div style="margin-top: 80px;" class="direction">
-                <button class="confirmar">Comprar</button>
-                <button class="confirmar">Cancelar</button>
+                <button onclick="fecharModal()" class="confirmar">Comprar</button>
+                <button onclick="fecharModal()"  class="confirmar">Cancelar</button>
             </div>   
         </div>
     </div>
 <!--Pop up-->    
-
+    <script>
+        function abrirModal() {
+            document.getElementById('Modal').style.display = 'flex';
+        }
+        function fecharModal() {
+            document.getElementById('Modal').style.display = "none"
+        }
+    </script>
 </body>
 </html>

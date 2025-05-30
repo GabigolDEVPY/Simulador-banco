@@ -151,7 +151,7 @@ body {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
 }
 
-.button-inferior:hover {
+.button-inferior:hover ,.button-moeda:hover{
     background-color: #4b0049;
 }
 
@@ -366,4 +366,40 @@ margin: 0;
     background-position: center;
     object-fit: fill;
     background-color:#300827;
+}
+
+.button-moeda {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 140px;
+    width: 420px;
+    background-color: #761f75;
+    border: none;
+    box-sizing: border-box;
+    padding: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+#Modal {
+    position: fixed;
+    display: flex;
+    top: 0; left: 0;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    width: 100%;
+}
+
+#Modal .conteudo {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 370px;
+    margin-bottom: 600px;
+    background: #300827;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
 }

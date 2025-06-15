@@ -14,12 +14,16 @@
             <h4>Olá, user</h4>
         </div>
         <div class="direction">
-            <button>Log-out</button>
+            <a href="{{ url_for('login_register.return_home') }}">
+                <button>Log-out</button>
+            </a>
             <div class="notification">
-                <button style="margin-left: 0px; background-color:#300827;" class="bell">
-                    <img src="../static/imgs/bell.png" alt="">
-                </button>
-                <div class="number-notification">1</div>
+                <a href="{{ url_for('home.return_notify') }}">
+                    <div class="number-notification">1</div>
+                    <button type="button" style="margin-left: 0px; background-color:#300827;" class="bell">
+                        <img src="../static/imgs/bell.png" alt="">
+                    </button>
+                </a>
             </div>
         </div>
     </div>

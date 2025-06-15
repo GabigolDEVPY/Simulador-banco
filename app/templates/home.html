@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/home.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>Home</title>
 </head>
 <body>
     <div class="nav-superior">
         <div class="direction">
-            <img src="../imgs/user.png" alt="icone do usuário" height="50px">
+            <img src="../static/imgs/user.png" alt="icone do usuário" height="50px">
             <h4>Olá, user</h4>
         </div>
         <div class="direction">
             <button>Log-out</button>
             <div class="notification">
                 <button style="margin-left: 0px; background-color:#300827;" class="bell">
-                    <img src="../imgs/bell.png" alt="">
+                    <img src="../static/imgs/bell.png" alt="">
                 </button>
                 <div class="number-notification">1</div>
             </div>
@@ -30,16 +30,16 @@
         </div>
         <div class="options-box">
             <button name="money" class="options-button">
-                <img src="../imgs/transfer.png" alt="">
+                <img src="../static/imgs/transfer.png" alt="">
             </button>
             <button class="options-button">
-                <img src="../imgs/investment.png"" alt="">
+                <img src="../static/imgs/investment.png"" alt="">
             </button>
             <button class="options-button">
-                <img src="../imgs/history.png" alt="">
+                <img src="../static/imgs/history.png" alt="">
             </button>
             <button class="options-button">
-                <img src="../imgs/pig.png" alt="">
+                <img src="../static/imgs/pig.png" alt="">
             </button>
         </div>
         <div class="final">
@@ -48,21 +48,21 @@
                     <label style="font-size: 17px; font-weight: bold;" for="emprestimo">Emprestimo</label>
                     <p style="font-size: 15px;">emprestimo disponível de R$ 7.000</p>
                 </div>
-                    <img src="../imgs/right-arrow.png" alt="setinha" height="20px">
+                    <img src="../static/imgs/right-arrow.png" alt="setinha" height="20px">
             </button>
             <button class="button-inferior">
                 <div class="infos-emprestimo">
                     <label style="font-size: 17px; font-weight: bold;" for="emprestimo">Jogar no Tigre</label>
                     <p style="font-size: 15px;">emprestimo disponível de R$ 7.000</p>
                 </div>
-                    <img src="../imgs/right-arrow.png" alt="setinha" height="20px">
+                    <img src="../static/imgs/right-arrow.png" alt="setinha" height="20px">
             </button>
             <button class="button-inferior">
                 <div class="infos-emprestimo">
                     <label style="font-size: 17px; font-weight: bold;" for="emprestimo">Doar</label>
                     <p style="font-size: 15px;">emprestimo disponível de R$ 7.000</p>
                 </div>
-                    <img src="../imgs/right-arrow.png" alt="setinha" height="20px">
+                    <img src="../static/imgs/right-arrow.png" alt="setinha" height="20px">
             </button>
         </div>
             

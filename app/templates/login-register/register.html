@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/login.css">
+    <link rel="stylesheet" href="/static/css/login.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Registrar</title>
 </head>
@@ -24,7 +24,9 @@
             <span></span>
             <div style="margin-top: 120px;" class="buttons">
                 <button>Registrar</button>
-                <button>Voltar</button>
+                <a href="{{ url_for('login_register.return_home') }}">
+                    <button type="button">Voltar</button>
+                </a>
             </div>
         </form>
     </div>

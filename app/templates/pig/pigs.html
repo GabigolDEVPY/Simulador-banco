@@ -9,8 +9,10 @@
 </head>
 <body>
     <div class="nav-superior" style="justify-content: flex-start;" >
+        <a href="{{ url_for('home.return_home') }}">
             <button style="margin-left: 0px;" class="button-return"></button>
-            <h3 style="margin-top: 17px; margin-left:20px" >Caixinhas</h3>
+        </a>
+        <h3 style="margin-top: 17px; margin-left:20px" >Caixinhas</h3>
     </div>
     </div>
     <div class="meio-resto">
@@ -18,19 +20,19 @@
             <h5>Total em Caixinhas</h5>
             <h4 style="margin-top: 5px; font-weight:lighter;" >R$ 2000</h4>
             <div style="display: flex; gap: 5px">
-                <img style="margin-top: 7px;" src="../../imgs/up-arrow.png" alt="setinha verde do investimento" height="14px">
+                <img style="margin-top: 7px;" src="../static/imgs/up-arrow.png" alt="setinha verde do investimento" height="14px">
                 <h6 style="margin-top: 10px; font-weight:lighter; color: green;">R$ 200 Ganhos</h6>
             </div>
         </div>
         <div class="final">
             <div class="tela-caixinhas">
                 <button class="caixinha">
-                    <img style="border-radius: 10px; object-fit: fill" src="../../imgs/viagens.webp" alt="imagem da caixinha" height="140" width="170">
+                    <img style="border-radius: 10px; object-fit: fill" src="../static/imgs/viagens.webp" alt="imagem da caixinha" height="140" width="170">
                     <div class="direction-caixinha">
                         <p style="font-size: 16px">Viagem</p>
                         <div style="display: flex; gap: 5px">
                             <h3 style="margin-top: 10px; font-weight:bold;">R$ 200</h3>
-                            <img style="margin-top: 7px;" src="../../imgs/up-arrow.png" alt="setinha verde do investimento" height="13px">
+                            <img style="margin-top: 7px;" src="../static/imgs/up-arrow.png" alt="setinha verde do investimento" height="13px">
                         </div>
                     </div>
                 </button>

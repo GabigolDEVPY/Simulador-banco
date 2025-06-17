@@ -14,3 +14,8 @@ def return_notify():
     return render_template('notify.html')
 
 
+@home_bp.route('/history', methods=["GET"])
+def return_history():
+    return render_template('history.html')
+
+

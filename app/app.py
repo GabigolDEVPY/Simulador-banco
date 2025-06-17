@@ -1,9 +1,11 @@
+import sys
+sys.dont_write_bytecode = True
 from flask import Blueprint, Flask
 from backend.routes.login_register_bp import login_register_bp
 from backend.routes.home_bp import home_bp
 from backend.routes.transfer import transfer_bp
-import sys
-sys.dont_write_bytecode = True
+from backend.routes.invest import invest_bp
+from backend.routes.pig import pig_bp
 
 
 def CreateApp():
@@ -11,9 +13,11 @@ def CreateApp():
     app.register_blueprint(login_register_bp)
     app.register_blueprint(home_bp)
     app.register_blueprint(transfer_bp)
+    app.register_blueprint(invest_bp)
+    app.register_blueprint(pig_bp)
     return app
 
 app = CreateApp()
 
 if __name__ == "__main__":
-    app.run(debug=True, host='localhost', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=5000)

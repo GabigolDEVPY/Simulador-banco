@@ -35,18 +35,24 @@
         <div class="options-box">
             <a href="{{ url_for('transfer.return_transfer_page') }}">
                 <button name="money" class="options-button">
-                    <img src="../static/imgs/transfer.png" alt="">
+                    <img src="../static/imgs/transfer.png" alt="janela de transferência">
                 </button>
             </a>
-            <button class="options-button">
-                <img src="../static/imgs/investment.png" alt="">
-            </button>
-            <button class="options-button">
-                <img src="../static/imgs/history.png" alt="">
-            </button>
-            <button class="options-button">
-                <img src="../static/imgs/pig.png" alt="">
-            </button>
+            <a href="{{ url_for('invest.return_invest_page') }}">
+                <button class="options-button">
+                    <img src="../static/imgs/investment.png" alt="janela de investimentos">
+                </button>
+            </a>
+            <a href="{{ url_for('home.return_history') }}">
+                <button class="options-button">
+                    <img src="../static/imgs/history.png" alt="">
+                </button>
+            </a>
+            <a href="{{ url_for('pig.return_pig_page') }}">
+                <button class="options-button">
+                    <img src="../static/imgs/pig.png" alt="">
+                </button>
+            </a>
         </div>
         <div class="final">
             <button class="button-inferior">

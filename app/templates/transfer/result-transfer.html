@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../css/home.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css')}}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 <body>
     <div class="nav-superior" style="justify-content: flex-start;" >
+         <a href="{{ url_for('home.return_home' )}}">
             <button style="margin-left: 0px;" class="button-close"></button>
-            <h4 style="margin-top: 20px; margin-left:20px" >Transferência Realizada</h4>
+        </a>
+        <h4 style="margin-top: 20px; margin-left:20px" >Transferência Realizada</h4>
     </div>
     <div class="meio-notify" style="height:700px; width: 400px; gap: 30px; font-size: 17px;">
         <div>
@@ -33,7 +35,9 @@
             <label style="font-size: 19px;" >Valor:</label>
             <p>R$ 3489243</p>
         </div>
-        <button class="confirmar">Ok</button>
+        <a href="{{ url_for('home.return_home' )}}">
+            <button class="confirmar">Ok</button>
+        </a>
     </div>
 </body>
 </html>

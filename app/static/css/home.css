@@ -72,6 +72,7 @@ body {
     height: 60px;
     flex-wrap: nowrap;
     transition: transform 0.3s ease-in-out;
+    cursor: pointer;
 }
 
 .notification:hover {
@@ -89,6 +90,7 @@ body {
     border-radius: 50%;
     background-color: #4b0049;
     color: #ffffff;
+    cursor: pointer;
 }
 
 .meio-resto {

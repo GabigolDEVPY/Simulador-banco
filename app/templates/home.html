@@ -33,11 +33,13 @@
             <h4 style="margin-top: 5px; font-weight:lighter;" >R$ nada rapaz</h4>
         </div>
         <div class="options-box">
-            <button name="money" class="options-button">
-                <img src="../static/imgs/transfer.png" alt="">
-            </button>
+            <a href="{{ url_for('transfer.return_transfer_page') }}">
+                <button name="money" class="options-button">
+                    <img src="../static/imgs/transfer.png" alt="">
+                </button>
+            </a>
             <button class="options-button">
-                <img src="../static/imgs/investment.png"" alt="">
+                <img src="../static/imgs/investment.png" alt="">
             </button>
             <button class="options-button">
                 <img src="../static/imgs/history.png" alt="">

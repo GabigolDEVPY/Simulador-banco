@@ -1,4 +1,6 @@
 from flask import Blueprint, render_template
+import sys
+sys.dont_write_bytecode = True
 
 transfer_bp = Blueprint('transfer', __name__,template_folder='../../templates/transfer')
 

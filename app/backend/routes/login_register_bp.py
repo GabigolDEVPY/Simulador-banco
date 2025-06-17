@@ -1,3 +1,4 @@
+
 from flask import Blueprint, render_template
 
 login_register_bp = Blueprint('login_register', __name__,template_folder='../../templates/login-register')

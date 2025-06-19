@@ -26,22 +26,29 @@
         </div>
         <div class="final">
             <div class="tela-caixinhas">
-                <button class="caixinha">
-                    <img style="border-radius: 10px; object-fit: fill" src="../static/imgs/viagens.webp" alt="imagem da caixinha" height="140" width="170">
-                    <div class="direction-caixinha">
-                        <p style="font-size: 16px">Viagem</p>
-                        <div style="display: flex; gap: 5px">
-                            <h3 style="margin-top: 10px; font-weight:bold;">R$ 200</h3>
-                            <img style="margin-top: 7px;" src="../static/imgs/up-arrow.png" alt="setinha verde do investimento" height="13px">
-                        </div>
-                    </div>
-                </button>
-                <button class="caixinha-vazia">    
-                </button>
-                <button class="caixinha-vazia">    
-                </button>
-                <button class="caixinha-vazia">    
-                </button>
+                {% if caixinhas %}
+                    {% for caixinha in caixinhas %}    
+                        <button class="caixinha">
+                            <img style="border-radius: 10px; object-fit: fill" src="{{ caixinha.imagem }}" alt="imagem da caixinha" height="140" width="170">
+                            <div class="direction-caixinha">
+                                <p style="font-size: 16px">Viagem</p>
+                                <div style="display: flex; gap: 5px">
+                                    <h3 style="margin-top: 10px; font-weight:bold;">R$ 200</h3>
+                                    <img style="margin-top: 7px;" src="../static/imgs/up-arrow.png" alt="setinha verde do investimento" height="13px">
+                                </div>
+                            </div>
+                        </button>
+                    {% endfor %}                            
+                    {% for caixinha in range(num_caixinhas) %}
+                        <button class="caixinha-vazia">    
+                        </button>  
+                    {% endfor %}    
+                {% else %}
+                    {% for i in range(4) %}        
+                        <button class="caixinha-vazia">    
+                        </button>
+                    {% endfor %}        
+                {% endif %}        
             </div>
         </div>
     </div>

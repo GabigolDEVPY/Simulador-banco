@@ -28,7 +28,9 @@
                 <h6 style="margin-top: 10px; font-weight:lighter; color: green;">R$ {{ caixinha.ganhos }} Ganhos</h6>
             </div><br><br>
             <div class="direction">
-                <button class="confirmar">Guardar</button>
+                <a href="{{ url_for('pig.return_guardar_pig', id=caixinha.id )}}">
+                    <button class="confirmar">Guardar</button>
+                </a>
                 <button class="confirmar">Resgatar</button>
                 <button class="confirmar" style="width: 50px" >
                     <img src="/static/imgs/trash.png" alt="lixo" height="25">

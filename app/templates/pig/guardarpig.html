@@ -9,19 +9,21 @@
 </head>
 <body>
     <div class="nav-superior" style="justify-content: flex-start;" >
+        <a href="{{ url_for('pig.return_pig_page', id=caixinha.id) }}">
             <button style="margin-left: 0px;" class="button-return"></button>
+        </a>
             <h3 style="margin-top: 17px; margin-left:20px" >Guardar Dinheiro</h3>
     </div>
     <div class="meio-resto">
         <div class="infos">
             <h4>Total na Carteira</h4>
-            <h4 style="font-weight:lighter;">R$ 2000</h4><br>
+            <h4 style="font-weight:lighter;">R$ 10000</h4><br>
 
             <h4>Total Caixinha</h4>
-            <h4 style="font-weight:lighter;" >R$ 2000</h4>
+            <h4 style="font-weight:lighter;" >R$ {{ caixinha.valor }}</h4>
             <div style="display: flex; gap: 5px">
-                <img style="margin-top: 7px;" src="../../imgs/up-arrow.png" alt="setinha verde do investimento" height="14px">
-                <h6 style="margin-top: 10px; font-weight:lighter; color: green;">R$ 200 Ganhos</h6>
+                <img style="margin-top: 7px;" src="/static/imgs/up-arrow.png" alt="setinha verde do investimento" height="14px">
+                <h6 style="margin-top: 10px; font-weight:lighter; color: green;">R$ {{ caixinha.ganhos }}</h6>
             </div><br><br>
 
             <div>

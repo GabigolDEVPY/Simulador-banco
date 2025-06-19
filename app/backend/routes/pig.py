@@ -25,13 +25,21 @@ def return_pig_page(id):
             return render_template('pig.html', caixinha=caixa)
         
 
-
-@pig_bp.route('/pig/criarpig', methods=["GET"])
+# CRIAR PORCOOOOOOOOOOOOOOOOOOOOOOOOOOo
+@pig_bp.route('/pig/criarpig', methods=["GET", "POST"])
 def return_pig_create():
-    return render_template('criarpig.html', imgs_caixinha=imgs_caixinha)      
+    if request.method == "GET":
+      return render_template('criarpig.html', imgs_caixinha=imgs_caixinha)      
+    if request.method == "POST":
+        dados = request.form.to_dict()
+        caixinhas.append(
+            {"id": 6, "nome": dados['nome'], "valor": dados['inicial'], "imagem": dados['imagem'], "valor_investido": dados['inicial'], "meta": dados['meta'], "ganhos": 0}
+        )
+        print(dados)
+        return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 4 - len(caixinhas))
 
 
-
+# GAURDAR VALOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOR
 @pig_bp.route('/pigs/pig/guardarpig/<int:id>', methods=["GET"])
 def return_guardar_pig(id):
       print(id)
@@ -52,7 +60,7 @@ def guardar_valor(id):
                 return render_template('pig.html', caixinha=caixinha)    
 
 
-
+# RESGATAR VALORRRRRRRRRRRRRRRRRRRRRRRRRRR
 @pig_bp.route('/pigs/pig/resgatarpig/<int:id>', methods=['GET'])
 def return_resgatar_valor(id):
         print(id)
@@ -73,7 +81,7 @@ def resgatar_valor(id):
                 return render_template('pig.html', caixinha=caixinha)    
 
 
-
+# DELETAR CAIXINHAAAA
 @pig_bp.route('/pigs/pig/deletepig/<int:id>', methods=["GET"])
 def delete_pig(id):
     for caixinha in caixinhas:

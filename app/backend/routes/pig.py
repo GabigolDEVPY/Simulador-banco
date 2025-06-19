@@ -14,15 +14,21 @@ def return_pigs_page():
     return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 4 - len(caixinhas) )
 
 
+
+
 @pig_bp.route('/pigs/pig/<int:id>', methods=['GET'])
 def return_pig_page(id):
     for caixa in caixinhas:
         if caixa['id'] == id:
             return render_template('pig.html', caixinha=caixa)
         
+
+
 @pig_bp.route('/pig/criarpig', methods=["GET"])
 def return_pig_create():
     return render_template('criarpig.html')      
+
+
 
 @pig_bp.route('/pigs/pig/guardarpig/<int:id>', methods=["GET"])
 def return_guardar_pig(id):
@@ -31,15 +37,19 @@ def return_guardar_pig(id):
         if caixinha['id'] == id:
             return render_template('guardarpig.html', caixinha=caixinha)
 
-@pig_bp.route('/pigs/pig/guardarpig/<int:id>', methods=['POST', 'GET'])
+
+
+@pig_bp.route('/pigs/pig/guardarpig/<int:id>', methods=['POST'])
 def guardar_valor(id):
     if request.method == 'POST':
         dados = request.form.to_dict()
         print(dados, "id", id)
         for caixinha in caixinhas:
             if caixinha['id'] == id:
+                caixinha['valor'] = (caixinha['valor'] + int(dados['value']))
                 return render_template('pig.html', caixinha=caixinha)         
           
+
 
 @pig_bp.route('/pigs/pig/deletepig/<int:id>', methods=["GET"])
 def delete_pig(id):

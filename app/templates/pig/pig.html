@@ -15,17 +15,17 @@
             <h3 style="margin-top: 17px; margin-left:20px" >Caixinhas</h3>
     </div>
     <div class="meio-resto">
-        <img src="/app/imgs/viagens.webp" alt="imagem da caixinha" style="object-fit: fill; border-radius: 10px; margin-top:10px;" height="230px" width="390px">
+        <img src="{{ caixinha.imagem }}" alt="imagem da caixinha" style="object-fit: fill; border-radius: 10px; margin-top:10px;" height="230px" width="390px">
         <div class="infos">
             <h4>Total Bruto</h4>
-            <h4 style="font-weight:lighter;" >R$ 2000</h4>
+            <h4 style="font-weight:lighter;" >R$ {{ caixinha.valor }}</h4>
             <h5 style="margin-top: 20px;">Valor investido</h5>
-            <h5 style="margin-top: 5px; font-weight:lighter;" >R$ 2000</h5>
+            <h5 style="margin-top: 5px; font-weight:lighter;" >R$ {{ caixinha.valor_investido }}</h5>
             <h5 style="margin-top: 20px;">Meta</h5>
-            <h5 style="margin-top: 5px; font-weight:lighter;" >R$ 12000</h5>
+            <h5 style="margin-top: 5px; font-weight:lighter;" >R$ {{ caixinha.meta }}</h5>
             <div style="display: flex; gap: 5px">
                 <img style="margin-top: 7px;" src="../static/imgs/up-arrow.png" alt="setinha verde do investimento" height="14px">
-                <h6 style="margin-top: 10px; font-weight:lighter; color: green;">R$ 200 Ganhos</h6>
+                <h6 style="margin-top: 10px; font-weight:lighter; color: green;">R$ {{ caixinha.ganhos }} Ganhos</h6>
             </div><br><br>
             <div class="direction">
                 <button class="confirmar">Guardar</button>

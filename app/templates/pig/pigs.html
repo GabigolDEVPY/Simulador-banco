@@ -32,9 +32,9 @@
                             <button type="submit" id={{ caixinha.id }} class="caixinha">
                                 <img style="border-radius: 10px; object-fit: fill" src="{{ caixinha.imagem }}" alt="imagem da caixinha" height="140" width="170">
                                 <div class="direction-caixinha">
-                                    <p style="font-size: 16px">Viagem</p>
+                                    <p style="font-size: 16px">{{ caixinha.nome }}</p>
                                     <div style="display: flex; gap: 5px">
-                                        <h3 style="margin-top: 10px; font-weight:bold;">R$ 200</h3>
+                                        <h3 style="margin-top: 10px; font-weight:bold;">R$ {{ caixinha.valor }}</h3>
                                         <img style="margin-top: 7px;" src="../static/imgs/up-arrow.png" alt="setinha verde do investimento" height="13px">
                                     </div>
                                 </div>
@@ -42,13 +42,17 @@
                         </form>       
                     {% endfor %}                            
                     {% for caixinha in range(num_caixinhas) %}
-                        <button class="caixinha-vazia">    
-                        </button>  
+                        <a href="{{ url_for('pig.return_pig_create') }}">
+                            <button class="caixinha-vazia">    
+                            </button>
+                        </a>   
                     {% endfor %}    
                 {% else %}
-                    {% for i in range(4) %}        
-                        <button class="caixinha-vazia">    
-                        </button>
+                    {% for i in range(4) %}
+                        <a href="{{ url_for('pig.return_pig_create') }}">
+                            <button class="caixinha-vazia">    
+                            </button>
+                        </a>        
                     {% endfor %}        
                 {% endif %}        
             </div>

@@ -267,6 +267,12 @@ margin: 0;
     height: 40px;
     background-color:#761f75;
     border: none;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: center;
+    font-size: 15px;
+    text-decoration: none;
 }
 
 .confirmar:hover {

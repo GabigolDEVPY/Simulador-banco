@@ -26,20 +26,23 @@
                 <h6 style="margin-top: 10px; font-weight:lighter; color: green;">R$ {{ caixinha.ganhos }}</h6>
             </div><br><br>
 
-            <div>
-            <label style="font-size: 19px;" >Valor:</label>
-            <input class="money" style="font-size: 16px" type="number" placeholder="R$ 0,00">
-            </div>
+            <form action="{{ url_for('pig.guardar_valor', id=caixinha.id) }}" method="post">
+                <div>
+                    <label style="font-size: 19px;" >Valor:</label>
+                    <input name="value" class="money" style="font-size: 16px" type="number" placeholder="R$ 0,00">
+                </div>
+    
+                <div style="margin-top: 20px;">
+                    <label style="font-size: 19px;" >Senha:</label>
+                    <input name="senha" class="money" style="font-size: 16px" type="password" placeholder="senha...">
+                </div>
+    
+                <div style="margin-top: 200px;" class="direction">
+                    <button type="submit" class="confirmar">Guardar</button>
+                    <a class="confirmar" href="{{ url_for('pig.return_pig_page', id=caixinha.id) }}" style="text-decoration: none;">Cancelar</a>   
+                </div>
+            </form>
 
-            <div style="margin-top: 20px;">
-            <label style="font-size: 19px;" >Senha:</label>
-            <input class="money" style="font-size: 16px" type="password" placeholder="senha...">
-            </div>
-
-            <div style="margin-top: 200px;" class="direction">
-                <button class="confirmar">Guardar</button>
-                <button class="confirmar">Cancelar</button>
-            </div>
         </div>
     </div>
 </body>

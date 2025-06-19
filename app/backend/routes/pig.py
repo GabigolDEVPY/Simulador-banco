@@ -29,10 +29,21 @@ def return_guardar_pig(id):
       print(id)
       for caixinha in caixinhas:
         if caixinha['id'] == id:
-            return render_template('guardarpig.html', caixinha=caixinha)          
+            return render_template('guardarpig.html', caixinha=caixinha)
+
+@pig_bp.route('/pigs/pig/guardarpig/<int:id>', methods=['POST', 'GET'])
+def guardar_valor(id):
+    if request.method == 'POST':
+        dados = request.form.to_dict()
+        print(dados, "id", id)
+        for caixinha in caixinhas:
+            if caixinha['id'] == id:
+                return render_template('pig.html', caixinha=caixinha)         
+          
 
 @pig_bp.route('/pigs/pig/deletepig/<int:id>', methods=["GET"])
 def delete_pig(id):
     for caixinha in caixinhas:
         if caixinha['id'] == id:
             caixinhas.remove(caixinha)
+    return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 4 - len(caixinhas))

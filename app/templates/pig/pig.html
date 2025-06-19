@@ -28,13 +28,15 @@
                 <h6 style="margin-top: 10px; font-weight:lighter; color: green;">R$ {{ caixinha.ganhos }} Ganhos</h6>
             </div><br><br>
             <div class="direction">
-                <a href="{{ url_for('pig.return_guardar_pig', id=caixinha.id )}}">
+                <a style="text-decoration: none;" href="{{ url_for('pig.return_guardar_pig', id=caixinha.id )}}">
                     <button class="confirmar">Guardar</button>
                 </a>
                 <button class="confirmar">Resgatar</button>
-                <button class="confirmar" style="width: 50px" >
-                    <img src="/static/imgs/trash.png" alt="lixo" height="25">
-                </button>
+                <a href="{{ url_for('pig.delete_pig', id=caixinha.id)}}">
+                    <button class="confirmar" style="width: 50px">
+                        <img src="/static/imgs/trash.png" alt="apagar caixinha" height="25">
+                    </button>
+                </a>
             </div>
         </div>
     </div>

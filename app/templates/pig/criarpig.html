@@ -14,72 +14,40 @@
         </a>
             <h3 style="margin-top: 17px; margin-left:20px" >Criar Caixinha</h3>
     </div>
-    <div class="meio-resto">
-        <div class="infos">
-            <div style="margin-top: 20px;">
-            <label style="font-size: 19px;" >Nome da Caixinha:</label>
-            <input class="money" style="font-size: 16px" type="text" placeholder="viagem...">
-            </div>
-
-
-            <div style="margin-top: 20px;">
-            <label style="font-size: 19px;" >Meta:</label><br>
-            <input class="money" style="font-size: 16px" type="number" placeholder="R$ 0,00">
-            </div>
-
-
-            <div style="margin-top: 20px;">
-            <label style="font-size: 19px;" >Valor inicial</label><br>
-            <input class="money" style="font-size: 16px" type="number" placeholder="R$ 0,00">
-            </div>
-
-            <div class="photos">
-                <div class="photo">
-                    <img src="../static/imgs-caixinha/carro.jpg" alt="imagem carro">
+    <form action="">
+        <div class="meio-resto">
+            <div class="infos">
+                <div style="margin-top: 20px;">
+                <label style="font-size: 19px;" >Nome da Caixinha:</label>
+                <input class="money" style="font-size: 16px" type="text" placeholder="viagem...">
                 </div>
-                <div class="photo">
-                    <img src="../static/imgs-caixinha/casa.jpg" alt="imagem carro">
+    
+    
+                <div style="margin-top: 20px;">
+                <label style="font-size: 19px;" >Meta:</label><br>
+                <input class="money" style="font-size: 16px" type="number" placeholder="R$ 0,00">
                 </div>
-                <div class="photo">
-                    <img src="../static/imgs-caixinha/casamento.webp" alt="imagem carro">
+    
+    
+                <div style="margin-top: 20px;">
+                <label style="font-size: 19px;" >Valor inicial</label><br>
+                <input class="money" style="font-size: 16px" type="number" placeholder="R$ 0,00">
                 </div>
-                <div class="photo">
-                    <img src="../static/imgs-caixinha/cinema.webp" alt="imagem carro">
+    
+                <div class="photos">
+                    {% for imagem in imgs_caixinha %}
+                        <div class="photo" tabindex="0">
+                            <img src="{{ imagem }}" alt="imagem carro">
+                        </div>
+                    {% endfor %}    
                 </div>
-                <div class="photo">
-                    <img src="../static/imgs-caixinha/cofre.jpeg" alt="imagem carro">
+    
+                <div style="margin-top: 130px;" class="direction">
+                    <button class="confirmar">Criar</button>
+                    <a class="confirmar" href="{{ url_for('pig.return_pigs_page') }}" style="text-decoration: none;">Cancelar</a>   
                 </div>
-                <div class="photo">
-                    <img src="../static/imgs-caixinha/moto.jpg" alt="imagem carro">
-                </div>
-                <div class="photo">
-                    <img src="../static/imgs-caixinha/moveis.jpg" alt="imagem carro">
-                </div>
-                <div class="photo">
-                    <img src="../static/imgs-caixinha/praia.jpg" alt="imagem carro">
-                </div>
-                <div class="photo">
-                    <img src="../static/imgs-caixinha/reforma.webp" alt="imagem carro">
-                </div>
-                <div class="photo">
-                    <img src="../static/imgs-caixinha/reserva.jpeg" alt="imagem carro">
-                </div>
-                <div class="photo">
-                    <img src="../static/imgs-caixinha/templo.jpg" alt="imagem carro">
-                </div>
-                <div class="photo">
-                    <img src="../static/imgs-caixinha/viagem.jpeg" alt="imagem carro">
-                </div>
-                <div class="photo">
-                    <img src="../static/imgs-caixinha/videogame.jpg" alt="imagem carro">
-                </div>
-            </div>
-
-            <div style="margin-top: 130px;" class="direction">
-                <button class="confirmar">Criar</button>
-                <button class="confirmar">Cancelar</button>
             </div>
         </div>
-    </div>
+    </form>
 </body>
 </html>

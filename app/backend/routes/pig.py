@@ -3,6 +3,8 @@ from flask import Blueprint, render_template, request
 
 pig_bp = Blueprint('pig', __name__,template_folder='../../templates/pig')
 
+imgs_caixinha = ["/static/imgs-caixinha/viagem.jpeg", "/static/imgs-caixinha/carro.jpg", "/static/imgs-caixinha/casa.jpg", "/static/imgs-caixinha/casamento.webp", "/static/imgs-caixinha/cinema.webp", "/static/imgs-caixinha/cofre.jpeg", "/static/imgs-caixinha/moto.jpg", "/static/imgs-caixinha/moveis.jpg", "/static/imgs-caixinha/praia.jpg", "/static/imgs-caixinha/reforma.webp", "/static/imgs-caixinha/reserva.jpeg", "/static/imgs-caixinha/templo.jpg", "/static/imgs-caixinha/videogame.jpg"]
+
 caixinhas = [
         {"id": 1, "nome": "Viagem", "valor": 1300, "imagem": "/static/imgs-caixinha/viagem.jpeg", "valor_investido": 1200, "meta": 20000, "ganhos": 254},        
         {"id": 5, "nome": "Avião", "valor": 10000, "imagem": "/static/imgs-caixinha/carro.jpg", "valor_investido": 3000, "meta": 23644, "ganhos": 212},        
@@ -26,7 +28,7 @@ def return_pig_page(id):
 
 @pig_bp.route('/pig/criarpig', methods=["GET"])
 def return_pig_create():
-    return render_template('criarpig.html')      
+    return render_template('criarpig.html', imgs_caixinha=imgs_caixinha)      
 
 
 

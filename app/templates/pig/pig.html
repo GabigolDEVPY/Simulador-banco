@@ -31,7 +31,9 @@
                 <a style="text-decoration: none;" href="{{ url_for('pig.return_guardar_pig', id=caixinha.id )}}">
                     <button class="confirmar">Guardar</button>
                 </a>
-                <button class="confirmar">Resgatar</button>
+                <a style="text-decoration: none;" href="{{ url_for('pig.return_resgatar_valor', id=caixinha.id )}}">
+                    <button class="confirmar">Resgatar</button>
+                </a>
                 <a href="{{ url_for('pig.delete_pig', id=caixinha.id)}}">
                     <button class="confirmar" style="width: 50px">
                         <img src="/static/imgs/trash.png" alt="apagar caixinha" height="25">

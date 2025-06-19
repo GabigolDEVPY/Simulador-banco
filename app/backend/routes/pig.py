@@ -47,8 +47,29 @@ def guardar_valor(id):
         for caixinha in caixinhas:
             if caixinha['id'] == id:
                 caixinha['valor'] = (caixinha['valor'] + int(dados['value']))
-                return render_template('pig.html', caixinha=caixinha)         
+                return render_template('pig.html', caixinha=caixinha)    
+
+
+
+@pig_bp.route('/pigs/pig/resgatarpig/<int:id>', methods=['GET'])
+def return_resgatar_valor(id):
+        print(id)
+        for caixinha in caixinhas:
+            if caixinha['id'] == id:
+                return render_template('resgatarpig.html', caixinha=caixinha)         
           
+
+
+@pig_bp.route('/pigs/pig/resgatarpig/<int:id>', methods=['POST'])
+def resgatar_valor(id):
+    if request.method == 'POST':
+        dados = request.form.to_dict()
+        print(dados, "id", id)
+        for caixinha in caixinhas:
+            if caixinha['id'] == id:
+                caixinha['valor'] = (caixinha['valor'] - int(dados['value']))
+                return render_template('pig.html', caixinha=caixinha)    
+
 
 
 @pig_bp.route('/pigs/pig/deletepig/<int:id>', methods=["GET"])

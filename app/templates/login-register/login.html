@@ -10,7 +10,7 @@
 <body>
     <div class="caixa-principal">
         <h1>Login</h1>
-        <form class="form" action="{{ url_for('home.return_home') }}">
+        <form class="form" action="{{ url_for('login_register.return_login') }}" method="get">
             <div class="inputs">
                 <label for="">Login</label>
                 <input name="login" type="text" placeholder="Login...">

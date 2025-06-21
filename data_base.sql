@@ -25,34 +25,33 @@ CREATE TABLE IF NOT exists user_history (
     FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
-CREATE Table pigs (
-    pig_id INT AUTO_INCREMENT,
+CREATE TABLE pigs (
+    pig_id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT,
-    FOREIGN KEY user_id REFERENCES users(user_id),
-    total_invest INT,
-    meta_pig INT,
-    total_bruto INT,
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    meta_pig DOUBLE,
+    total_bruto DOUBLE,
     image_pig VARCHAR(60),
     nome_pig VARCHAR(30),
-    ganhos_total INT,
+    ganhos_total DOUBLE,
     ultimos_ganhos_pig DOUBLE
-)
+);
 
 DROP TABLE pigs;
 
 CREATE TABLE user_notifications (
     id INT PRIMARY KEY AUTO_INCREMENT, 
     user_id INT,
-    FOREIGN KEY user_id REFERENCES users(user_id),
-    title_notify VARCHAR(40)
-    subtitle_nofify VARCHAR(70)
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
+    title_notify VARCHAR(40),
+    subtitle_notify VARCHAR(70),
     date_notify TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-)
+);
 
 CREATE TABLE invest(
     id INT PRIMARY KEY AUTO_INCREMENT,
     user_id INT,
-    FOREIGN KEY user_id REFERENCES users(user_id),
+    FOREIGN KEY (user_id) REFERENCES users(user_id),
     bitcoin_invest DOUBLE DEFAULT 0,
     ethereum_invest DOUBLE DEFAULT 0,
     dolar_invest DOUBLE DEFAULT 0

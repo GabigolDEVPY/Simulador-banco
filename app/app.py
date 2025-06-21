@@ -1,6 +1,6 @@
 import sys
 sys.dont_write_bytecode = True
-from flask import Blueprint, Flask
+from flask import Flask
 from backend.routes.login_register_bp import login_register_bp
 from backend.routes.home_bp import home_bp
 from backend.routes.transfer import transfer_bp

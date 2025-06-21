@@ -3,8 +3,8 @@ import requests
 class Get_value():
 
     @staticmethod
-    def puxar_bitcoin():
-        url = 'https://api.coingecko.com/api/v3/coins/bitcoin'
+    def puxar_cripto(url):
+        url = url
         response = requests.get(url)
 
         if response.status_code == 200:
@@ -16,16 +16,19 @@ class Get_value():
             }
             return dados
         
-    @staticmethod
-    def puxar_ethereum():
-        url = 'https://api.coingecko.com/api/v3/coins/ethereum'
-        response = requests.get(url)
 
+    @staticmethod
+    def puxar_dolar():
+        url = 'https://economia.awesomeapi.com.br/json/last/USD-BRL'
+        response = requests.get(url)
         if response.status_code == 200:
-            dados = response.json()
+            dados = response.json()['USDBRL']
+            print(dados)
             dados = {
-                "preco": dados['market_data']['current_price']['brl'],
-                "maximo": dados['market_data']['high_24h']['brl'],
-                "minimo": dados['market_data']['low_24h']['brl']
+                "preco": dados['bid'],
+                "maximo": dados['high'],
+                "minimo": dados['low']
             }
             return dados
+
+

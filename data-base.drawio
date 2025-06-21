@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="xV-PeSpA7DipHgNXlCXi" name="Page-1">
-        <mxGraphModel dx="1166" dy="1195" grid="1" gridSize="11" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="light-dark(#FFFFFF,#474747)" math="0" shadow="1">
+        <mxGraphModel dx="1166" dy="1227" grid="1" gridSize="11" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="850" pageHeight="1100" background="light-dark(#FFFFFF,#474747)" math="0" shadow="1">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -29,7 +29,7 @@
                         <mxPoint x="379.4999999999998" y="857.9999999999998" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="99" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontColor=light-dark(#000000,#000000);strokeColor=light-dark(#000000,#000000);entryX=-0.003;entryY=0.337;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="24" edge="1" target="100">
+                <mxCell id="99" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontColor=light-dark(#000000,#000000);strokeColor=light-dark(#000000,#000000);entryX=-0.003;entryY=0.337;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="24" target="100" edge="1">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="1078" y="363" as="targetPoint"/>
                     </mxGeometry>
@@ -149,9 +149,6 @@
                 </mxCell>
                 <mxCell id="78" value="" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;glass=1;" parent="1" vertex="1">
                     <mxGeometry x="1078" y="-242" width="176" height="231" as="geometry"/>
-                </mxCell>
-                <mxCell id="79" value="totaal_invest" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="1136" y="-170.5" width="60" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="80" value="bitcoin_invest" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="1136" y="-140.5" width="60" height="30" as="geometry"/>

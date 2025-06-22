@@ -55,7 +55,7 @@ CREATE TABLE invest(
     bitcoin_invest DOUBLE DEFAULT 0,
     ethereum_invest DOUBLE DEFAULT 0,
     dolar_invest DOUBLE DEFAULT 0
-)
+);
 
 
 SELECT * from users;

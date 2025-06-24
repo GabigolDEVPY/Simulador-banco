@@ -1,7 +1,7 @@
 import sys
 sys.dont_write_bytecode = True
 from flask import Flask
-from flask_jwt_extended import JWTManager
+
 
 from backend.routes.login_register_bp import login_register_bp
 from backend.routes.home_bp import home_bp
@@ -12,9 +12,6 @@ from backend.routes.pig import pig_bp
 
 def CreateApp():
     app = Flask(__name__)
-    app.config['JWT_SECRET_KEY'] = '89jdfgh98234jhkfjsdhfhs8923'
-
-    jwt = JWTManager(app)
 
     app.register_blueprint(login_register_bp)
     app.register_blueprint(home_bp)

@@ -1,6 +1,7 @@
 
-from flask import Blueprint, render_template, request, jsonify
-from flask_jwt_extended import create_access_token
+from flask import Blueprint, render_template, request, jsonify, make_response
+
+
 
 login_register_bp = Blueprint('login_register', __name__,template_folder='../../templates/login-register')
 
@@ -13,8 +14,7 @@ def return_home():
 def return_login():
     dados = request.args.to_dict()
     if dados['login'] == 'gabigolbr36@gmail.com':
-        token = create_access_token(identity=dados['login'])
-        return render_template('home.html', token=token)
+        return render_template('home.html')
     return jsonify('Dados Inválidos'), 404
 
 

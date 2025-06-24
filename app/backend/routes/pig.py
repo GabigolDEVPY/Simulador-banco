@@ -12,6 +12,7 @@ caixinhas = [
 ]
 
 @pig_bp.route('/pigs', methods=['GET'])
+
 def return_pigs_page():
     return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 4 - len(caixinhas) )
 
@@ -19,6 +20,7 @@ def return_pigs_page():
 
 
 @pig_bp.route('/pigs/pig/<int:id>', methods=['GET'])
+
 def return_pig_page(id):
     for caixa in caixinhas:
         if caixa['id'] == id:
@@ -27,6 +29,7 @@ def return_pig_page(id):
 
 # CRIAR PORCOOOOOOOOOOOOOOOOOOOOOOOOOOo
 @pig_bp.route('/pig/criarpig', methods=["GET", "POST"])
+
 def return_pig_create():
     if request.method == "GET":
       return render_template('criarpig.html', imgs_caixinha=imgs_caixinha)      
@@ -41,6 +44,7 @@ def return_pig_create():
 
 # GAURDAR VALOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOR
 @pig_bp.route('/pigs/pig/guardarpig/<int:id>', methods=["GET"])
+
 def return_guardar_pig(id):
       print(id)
       for caixinha in caixinhas:
@@ -50,6 +54,7 @@ def return_guardar_pig(id):
 
 
 @pig_bp.route('/pigs/pig/guardarpig/<int:id>', methods=['POST'])
+
 def guardar_valor(id):
     if request.method == 'POST':
         dados = request.form.to_dict()
@@ -83,6 +88,7 @@ def resgatar_valor(id):
 
 # DELETAR CAIXINHAAAA
 @pig_bp.route('/pigs/pig/deletepig/<int:id>', methods=["GET"])
+
 def delete_pig(id):
     for caixinha in caixinhas:
         if caixinha['id'] == id:

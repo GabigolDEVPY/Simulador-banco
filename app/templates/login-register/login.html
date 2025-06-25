@@ -13,9 +13,10 @@
         <form class="form" action="{{ url_for('login_register.return_login') }}" method="get">
             <div class="inputs">
                 <label for="">Login</label>
-                <input name="login" type="text" placeholder="Login...">
+                <input name="login" type="text" placeholder="Login..." required minlength="3">
                 <label for="">Senha</label>
-                <input name="senha" type="password" placeholder="Senha...">
+                <input name="senha" type="password" placeholder="Senha..." required minlength="8">
+                <label style="font-size: 13px; font-weight: normal; color: red; height: 13px;" for="">{{ error }}</label>
             </div>
             <div class="buttons">
                 <button>Logar</button>

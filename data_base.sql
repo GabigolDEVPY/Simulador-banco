@@ -59,3 +59,11 @@ CREATE TABLE invest(
 
 
 SELECT * from users;
+
+
+INSERT INTO users (user_name, user_login, user_password, chave_pix) VALUES (
+    "gabriel",
+    "gabigol",
+    "12345678",
+    "gabigol"
+)

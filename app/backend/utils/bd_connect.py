@@ -19,5 +19,7 @@ class BD_execute():
         result = cursor.fetchall()
         cursor.close()
         connection.close()
-        return result
+        if result:
+            return result
+        return None
         

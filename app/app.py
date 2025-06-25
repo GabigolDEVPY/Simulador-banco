@@ -12,7 +12,6 @@ from backend.routes.pig import pig_bp
 
 def CreateApp():
     app = Flask(__name__)
-
     app.register_blueprint(login_register_bp)
     app.register_blueprint(home_bp)
     app.register_blueprint(transfer_bp)

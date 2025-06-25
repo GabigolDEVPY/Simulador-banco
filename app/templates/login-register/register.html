@@ -8,28 +8,30 @@
     <title>Registrar</title>
 </head>
 <body>
+     {% if registrado %}
+        <script>alert('Usuário foi cadastrado com sucesso')</script>
+     {% endif %}   
     <div style="height: 620px;" class="caixa-principal">
         <h1>Registrar</h1>
-        <form class="form" action="">
+        <form class="form" action="{{ url_for('login_register.register_user') }}" method="post">
             <div class="inputs">
                 <label for="">Login:</label>
-                <input name="login" type="text" placeholder="Login...">
+                <input name="login" type="text" placeholder="Login..." required minlength="3">
                 <label for="">Senha:</label>
-                <input name="senha" type="password" placeholder="Senha...">
+                <input name="senha" type="password" placeholder="Senha..." required minlength="8">
                 <label for="">Chave Pix:</label>
-                <input name="login" type="text" placeholder="Chave pix...">
+                <input name="chave" type="text" placeholder="Chave pix..." required minlength="6">
                 <label for="">Nome:</label>
-                <input name="senha" type="text" placeholder="Nome...">
+                <input name="nome" type="text" placeholder="Nome..." required minlength="3">
             </div>
             <span></span>
             <div style="margin-top: 120px;" class="buttons">
-                <button>Registrar</button>
+                <button type="submit" >Registrar</button>
                 <a href="{{ url_for('login_register.return_home') }}">
                     <button type="button">Voltar</button>
                 </a>
             </div>
         </form>
     </div>
-
 </body>
 </html>

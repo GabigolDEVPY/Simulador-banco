@@ -8,9 +8,14 @@
     <title>Login</title>
 </head>
 <body>
+    {% with messages = get_flashed_messages() %}
+    {% if messages == 1 %}
+        <script>alert('Usuário foi cadastrado com sucesso')</script>
+    {% endif %}   
+    {% endwith %} 
     <div class="caixa-principal">
         <h1>Login</h1>
-        <form class="form" action="{{ url_for('login_register.return_login') }}" method="get">
+        <form class="form" action="{{ url_for('login_register.return_login') }}" method="post">
             <div class="inputs">
                 <label for="">Login</label>
                 <input name="login" type="text" placeholder="Login..." required minlength="3">

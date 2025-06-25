@@ -16,10 +16,14 @@ class BD_execute():
         connection = get_connection()
         cursor = connection.cursor(dictionary=True)
         cursor.execute(comand, args)
+        rows = cursor.rowcount
         result = cursor.fetchall()
+        connection.commit()
         cursor.close()
         connection.close()
         if result:
             return result
+        if rows:
+            return rows
         return None
         

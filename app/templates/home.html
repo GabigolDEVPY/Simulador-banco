@@ -19,7 +19,7 @@
             </a>
             <div class="notification">
                 <a href="{{ url_for('home.return_notify') }}">
-                    <div class="number-notification">1</div>
+                    <div class="number-notification">{{ dados.user_notifications }}</div>
                     <button type="button" style="margin-left: 0px; background-color:#300827;" class="bell">
                         <img src="../static/imgs/bell.png" alt="">
                     </button>
@@ -30,7 +30,7 @@
     <div class="meio-resto">
         <div class="infos">
             <h5 >Saldo em conta</h5>
-            <h4 style="margin-top: 5px; font-weight:lighter;" >R$ nada rapaz</h4>
+            <h4 style="margin-top: 5px; font-weight:lighter;" >R$ {{ dados.user_found }}</h4>
         </div>
         <div class="options-box">
             <a href="{{ url_for('transfer.return_transfer_page') }}">

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash
+from flask import Blueprint, render_template, request, jsonify, redirect, url_for, flash, session
 from ..utils.cliente import Cliente
 login_register_bp = Blueprint('login_register', __name__,template_folder='../../templates/login-register')
 
@@ -17,10 +17,12 @@ def return_home_error():
 def return_login():
     dados = request.form.to_dict()
     if dados:
-        result = Cliente.login(dados)
+        result = (Cliente.login(dados))[0]
         if result:
             print(result)
-            return render_template('home.html', dados=result[0])
+            session['login'] = result['user_login']
+            session['senha'] = result['user_password']
+            return render_template('home.html', dados=result)
         return redirect(url_for("login_register.return_home_error"))
     return jsonify('Dados Inválidos'), 404
 

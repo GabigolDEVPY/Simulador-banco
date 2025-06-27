@@ -20,7 +20,6 @@ def return_notify():
 
 
 @home_bp.route('/history', methods=["GET"])
-
 def return_history():
     return render_template('history.html')
 

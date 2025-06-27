@@ -16,7 +16,7 @@ html{
     align-items: center;
     justify-content: center;
     align-content: center;
-    gap: 10px;
+    gap: 5px;
 }
 
 body {
@@ -38,13 +38,12 @@ body {
     width: 420px;
     padding: 10px;
     box-sizing: border-box;
-    gap: 10px;
+    gap: 5px;
 }
 
 .nav-superior button {
     background-color: #761f75;
     border: none;
-    margin-left: 105px;
     font-size: 17px;
 }
 
@@ -91,6 +90,7 @@ body {
     background-color: #4b0049;
     color: #ffffff;
     cursor: pointer;
+    z-index: 999;
 }
 
 .meio-resto {

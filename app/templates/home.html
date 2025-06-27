@@ -11,7 +11,7 @@
     <div class="nav-superior">
         <div class="direction">
             <img src="../static/imgs/user.png" alt="icone do usuário" height="50px">
-            <h4>Olá, user</h4>
+            <h4>Olá, {{ dados.user_name }}</h4>
         </div>
         <div class="direction">
             <a href="{{ url_for('login_register.return_home') }}">

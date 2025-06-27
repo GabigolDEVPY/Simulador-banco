@@ -19,8 +19,8 @@ def return_login():
     if dados:
         result = Cliente.login(dados)
         if result:
-            return render_template('home.html')
-        flash("Usuário ou senha inválidos")
+            print(result)
+            return render_template('home.html', dados=result[0])
         return redirect(url_for("login_register.return_home_error"))
     return jsonify('Dados Inválidos'), 404
 
@@ -38,3 +38,5 @@ def register_user():
         if result:
             flash('mensagem')
             return redirect(url_for("login_register.return_home"))
+        flash('mensagem')
+        return redirect(url_for("login_register.return_register_page"))

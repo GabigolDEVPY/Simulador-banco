@@ -9,7 +9,7 @@
 </head>
 <body>
     {% with messages = get_flashed_messages() %}
-    {% if messages == 1 %}
+    {% if messages %}
         <script>alert('Usuário foi cadastrado com sucesso')</script>
     {% endif %}   
     {% endwith %} 

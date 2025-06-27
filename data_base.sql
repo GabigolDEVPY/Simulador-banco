@@ -4,9 +4,9 @@ DROP TABLE users;
 CREATE TABLE IF NOT exists users (
     user_id INT PRIMARY KEY AUTO_INCREMENT,
     user_name VARCHAR(50) NOT NULL,
-    user_login VARCHAR(50) NOT NULL,
+    user_login VARCHAR(50) NOT NULL UNIQUE,
     user_password VARCHAR(50) NOT NULL,
-    chave_pix VARCHAR(70) NOT NULL,
+    chave_pix VARCHAR(70) NOT NULL UNIQUE,
     user_score INT DEFAULT 0, 
     user_found DOUBLE DEFAULT 0, 
     user_notifications INT DEFAULT 0,

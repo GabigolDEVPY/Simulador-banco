@@ -10,7 +10,9 @@
 <body>
     {% with messages = get_flashed_messages() %}
     {% if messages %}
-        <script>alert('Usuário foi cadastrado com sucesso')</script>
+        {% for msg in messages %}
+            <script>alert('{{ msg }}')</script>
+        {% endfor %}
     {% endif %}   
     {% endwith %} 
     <div class="caixa-principal">

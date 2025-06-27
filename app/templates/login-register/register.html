@@ -8,11 +8,13 @@
     <title>Registrar</title>
 </head>
 <body>
-    {% with menssage = get_flashed_messages() %}
-    {% if menssage %}
-        <script>alert('Usuário não foi cadastrado')</script>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for msg in messages %}
+            <script>alert('{{ msg }}')</script>
+        {% endfor %}
     {% endif %}   
-    {% endwith %}
+    {% endwith %} 
     <div style="height: 620px;" class="caixa-principal">
         <h1>Registrar</h1>
         <form class="form" action="{{ url_for('login_register.register_user') }}" method="post">

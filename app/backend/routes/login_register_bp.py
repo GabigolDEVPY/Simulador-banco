@@ -17,11 +17,10 @@ def return_home_error():
 def return_login():
     dados = request.form.to_dict()
     if dados:
-        result = (Cliente.login(dados))[0]
+        result = Cliente.login(dados)
         if result:
-            print(result)
+            result = result[0]
             session['login'] = result['user_login']
-            session['senha'] = result['user_password']
             return render_template('home.html', dados=result)
         return redirect(url_for("login_register.return_home_error"))
     return jsonify('Dados Inválidos'), 404
@@ -38,7 +37,14 @@ def register_user():
     if dados:
         result = Cliente.register(dados)
         if result:
-            flash('mensagem')
+            flash('Usuário cadastrado com sucesso!')
             return redirect(url_for("login_register.return_home"))
-        flash('mensagem')
+        flash('Erro ao cadastrar usuário')
         return redirect(url_for("login_register.return_register_page"))
+    
+
+@login_register_bp.route("/logout", methods=["GET"])
+def logout():
+    session.clear()
+    flash("Logout realizado com sucesso")
+    return redirect(url_for("login_register.return_home"))    

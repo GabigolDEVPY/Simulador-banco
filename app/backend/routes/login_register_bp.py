@@ -16,6 +16,7 @@ def return_home_error():
 @login_register_bp.route('/login', methods=["POST"])
 def return_login():
     dados = request.form.to_dict()
+    print(dados)
     if dados:
         result = Cliente.login(dados)
         if result:

@@ -5,7 +5,8 @@ class Cliente():
     @staticmethod
     def login(dados):
         if "login" in session:
-            dados = BD_execute.execute_comand("SELECT * FROM users WHERE user_login = %s", dados)
+            print(session['login'])
+            dados = BD_execute.execute_comand("SELECT * FROM users WHERE user_login = %s", session['login'])
             return dados[0]
         
         comand = "SELECT * FROM users WHERE user_login = %s AND user_password = %s"

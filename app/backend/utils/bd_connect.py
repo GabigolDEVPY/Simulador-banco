@@ -15,7 +15,7 @@ class BD_execute():
     def execute_comand(comand, *args):
         connection = get_connection()
         cursor = connection.cursor(dictionary=True)
-        cursor.execute(comand, args)
+        cursor.execute(comand, (args))
         rows = cursor.rowcount
         result = cursor.fetchall()
         connection.commit()

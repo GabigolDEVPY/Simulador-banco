@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request
-
+from..utils.auth import login_required
 
 pig_bp = Blueprint('pig', __name__,template_folder='../../templates/pig')
 
@@ -12,7 +12,7 @@ caixinhas = [
 ]
 
 @pig_bp.route('/pigs', methods=['GET'])
-
+@login_required
 def return_pigs_page():
     return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 4 - len(caixinhas) )
 
@@ -20,7 +20,7 @@ def return_pigs_page():
 
 
 @pig_bp.route('/pigs/pig/<int:id>', methods=['GET'])
-
+@login_required
 def return_pig_page(id):
     for caixa in caixinhas:
         if caixa['id'] == id:
@@ -29,7 +29,7 @@ def return_pig_page(id):
 
 # CRIAR PORCOOOOOOOOOOOOOOOOOOOOOOOOOOo
 @pig_bp.route('/pig/criarpig', methods=["GET", "POST"])
-
+@login_required
 def return_pig_create():
     if request.method == "GET":
       return render_template('criarpig.html', imgs_caixinha=imgs_caixinha)      
@@ -44,7 +44,7 @@ def return_pig_create():
 
 # GAURDAR VALOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOR
 @pig_bp.route('/pigs/pig/guardarpig/<int:id>', methods=["GET"])
-
+@login_required
 def return_guardar_pig(id):
       print(id)
       for caixinha in caixinhas:
@@ -54,7 +54,7 @@ def return_guardar_pig(id):
 
 
 @pig_bp.route('/pigs/pig/guardarpig/<int:id>', methods=['POST'])
-
+@login_required
 def guardar_valor(id):
     if request.method == 'POST':
         dados = request.form.to_dict()
@@ -67,6 +67,7 @@ def guardar_valor(id):
 
 # RESGATAR VALORRRRRRRRRRRRRRRRRRRRRRRRRRR
 @pig_bp.route('/pigs/pig/resgatarpig/<int:id>', methods=['GET'])
+@login_required
 def return_resgatar_valor(id):
         print(id)
         for caixinha in caixinhas:
@@ -76,6 +77,7 @@ def return_resgatar_valor(id):
 
 
 @pig_bp.route('/pigs/pig/resgatarpig/<int:id>', methods=['POST'])
+@login_required
 def resgatar_valor(id):
     if request.method == 'POST':
         dados = request.form.to_dict()
@@ -88,7 +90,7 @@ def resgatar_valor(id):
 
 # DELETAR CAIXINHAAAA
 @pig_bp.route('/pigs/pig/deletepig/<int:id>', methods=["GET"])
-
+@login_required
 def delete_pig(id):
     for caixinha in caixinhas:
         if caixinha['id'] == id:

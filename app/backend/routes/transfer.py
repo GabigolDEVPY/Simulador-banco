@@ -23,10 +23,8 @@ def return_transfer_confer():
     elif result == 2:
         flash('Chave pix inválida')
         return redirect(url_for("transfer.return_transfer_page"))   
-    elif result == 3:
-        return render_template('transfer-verify.html')
     else:
-        return abort(403)
+        return render_template('transfer-verify.html', dados=result)
 
 
 

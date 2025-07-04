@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, flash, url_for, redirect, abort
 from..utils.auth import login_required
 from..utils.payment import Payment
+import ast
 
 transfer_bp = Blueprint('transfer', __name__,template_folder='../../templates/transfer')
 
@@ -16,6 +17,7 @@ def return_transfer_page():
 @login_required
 def return_transfer_confer():
     dados = request.form.to_dict()
+    print("rota 1", dados)
     result = Payment.pix_sender_verify(dados)
     if result == 1:
         flash('Valor saldo insuficiente, seu pobre!')
@@ -24,13 +26,17 @@ def return_transfer_confer():
         flash('Chave pix inválida')
         return redirect(url_for("transfer.return_transfer_page"))   
     else:
-        return render_template('transfer-verify.html', dados=result)
+        result = result[0]
+        return render_template('transfer-verify.html', result=result, valor=float(dados['valor']))
 
 
 
 
-
-@transfer_bp.route('/result-transfer', methods=['POST'])
+@transfer_bp.route('/result-transfer/<result>/<valor>', methods=['POST'])
 @login_required    
-def return_result_transfer():
+def return_result_transfer(result, valor):
+    dados = ast.literal_eval(result)
+    dados['valor'] = float(valor)
+    dados['validado'] = "validado"
+    result = Payment.pix_sender_verify(dados)
     return render_template('result-transfer.html')

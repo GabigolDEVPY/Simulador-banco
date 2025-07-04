@@ -14,19 +14,19 @@
         </a>
             <h4 style="margin-top: 20px; margin-left:20px" >Transferência</h4>
     </div>
-    <form action="{{ url_for('transfer.return_result_transfer') }}" method="post">
+    <form action="{{ url_for('transfer.return_result_transfer', result=result, valor=valor) }}" method="post">
         <div class="meio-notify" style="height:700px; width: 400px; gap: 30px; font-size: 17px;">
             <div>
                 <label>Nome:</label>
-                <p>Gabriel Rocha Dias</p>
+                <p>{{ result.user_name }}</p>
             </div>
             <div>
                 <label>Chave:</label>
-                <p>43242376423</p>
+                <p>{{ result.chave_pix }}</p>
             </div>
             <div>
                 <label style="font-size: 19px;" >Valor:</label>
-                <p>R$ 3489243</p>
+                <p>R$ {{ valor }}</p>
             </div>
             <div>
                 <label style="font-size: 19px;" >Senha:</label>

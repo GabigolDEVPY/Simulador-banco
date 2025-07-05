@@ -41,9 +41,11 @@ def return_transfer_confer():
 def return_result_transfer(result, valor):
     dados = ast.literal_eval(result)
     senha = request.form.to_dict()
-    print(senha)
-    print(dados)
     dados['valor'] = float(valor)
     dados['validado'] = "validado"
+    dados['user_password'] = senha['user_password']
     result = Payment.pix_sender_verify(dados)
+    if result == 4:
+        flash("Senha incorreta")
+        return redirect(url_for("transfer.return_transfer_page"))   
     return render_template('result-transfer.html')

@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash, url_for, redirect, abort
+from flask import Blueprint, render_template, request, flash, url_for, redirect, abort, session
 from..utils.auth import login_required
 from..utils.payment import Payment
 import ast
@@ -17,7 +17,7 @@ def return_transfer_page():
 @login_required
 def return_transfer_confer():
     dados = request.form.to_dict()
-    print("rota 1", dados)
+    print("rota 1", dados, session['chave_pix'])
     result = Payment.pix_sender_verify(dados)
     if result == 1:
         flash('Valor saldo insuficiente, seu pobre!')
@@ -40,6 +40,9 @@ def return_transfer_confer():
 @login_required    
 def return_result_transfer(result, valor):
     dados = ast.literal_eval(result)
+    senha = request.form.to_dict()
+    print(senha)
+    print(dados)
     dados['valor'] = float(valor)
     dados['validado'] = "validado"
     result = Payment.pix_sender_verify(dados)

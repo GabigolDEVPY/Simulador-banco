@@ -4,7 +4,7 @@ from flask import session
 class Payment:
     @staticmethod
     def pix_sender_verify(dados):
-        if dados['chave_pix'] != session["chave_pix"]:
+        if dados['chave_pix'] == session["chave_pix"]:
             return 3
         if "validado" in dados:
                 result = BD_execute.execute_comand("UPDATE users SET user_found = user_found + %s, user_notifications = user_notifications + %s WHERE chave_pix = %s", dados['valor'], 1, dados["chave_pix"])

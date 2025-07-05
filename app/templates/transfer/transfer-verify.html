@@ -8,7 +8,14 @@
     <title>transferencia</title>
 </head>
 <body>
-    <div class="nav-superior" style="justify-content: flex-start;" >
+    {% with messages = get_flashed_messages %}
+    {% if message %}
+        {% for msg in messages %}
+            <script>alert("{{ msg }}")</script>
+        {% endfor %}
+    {% endif %} 
+    {% endwith %}       
+    <div class="nav-superior" style="justify-content: flex]tart;" >
         <a href="{{ url_for('home.return_home' )}}">
             <button style="margin-left: 0px;" class="button-close"></button>
         </a>

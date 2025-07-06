@@ -1,5 +1,7 @@
 from ..utils.bd_connect import BD_execute
 from flask import session
+from datetime import datetime
+import random
 
 class Payment:
     @staticmethod
@@ -21,6 +23,17 @@ class Payment:
             return 2
         return 1
     
+    def dados_result(dados):
+        user_name = BD_execute.execute_comand('SELECT user_name FROM users WHERE chave_pix = %s', dados['chave_pix'])
+        id_transferencia = ''.join(str(x) for x in [random.randint(0, 10) for x in range(14)])
+        date = datetime.now()
+        dados = {
+            "user_name": user_name[0]["user_name"],
+            "chave": dados["chave_pix"],
+            "data_transferencia": str(f'{date.day}/{date.month}/{date.year}'),
+            "Id_transferencia": id_transferencia
+        }
+        return dados
 
 
 

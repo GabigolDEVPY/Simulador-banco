@@ -46,5 +46,7 @@ def return_result_transfer(result, valor):
     result = Payment.pix_sender_verify(dados)
     if result == 4:
         flash("Senha incorreta")
-        return redirect(url_for("transfer.return_transfer_page"))   
-    return render_template('result-transfer.html')
+        return redirect(url_for("transfer.return_transfer_page"))
+    dados_result = Payment.dados_result(dados)  
+    print(dados_result)
+    return redirect(url_for(render_template(('result-transfer.html', dados=dados_result, valor=valor))

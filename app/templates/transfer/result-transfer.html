@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="nav-superior" style="justify-content: flex-start;" >
-         <a href="{{ url_for('home.return_home' )}}">
+        <a href="{{ url_for('home.return_home' )}}">
             <button style="margin-left: 0px;" class="button-close"></button>
         </a>
         <h4 style="margin-top: 20px; margin-left:20px" >Transferência Realizada</h4>
@@ -17,23 +17,23 @@
     <div class="meio-notify" style="height:700px; width: 400px; gap: 30px; font-size: 17px;">
         <div>
             <label>Nome:</label>
-            <p>Gabriel Rocha Dias</p>
+            <p>{{ dados.user_name }}</p>
         </div>
         <div>
             <label>Chave:</label>
-            <p>43242376423</p>
+            <p>{{ dados.chave }}</p>
         </div>
         <div>
             <label>Data da Transferência:</label>
-            <p>11/05/2005</p>
+            <p>{{ dados.data_transferencia }}</p>
         </div>
         <div>
             <label>ID da Transferência:</label><p></p>
-            <p>641042364263764</p>
+            <p>{{ dados.Id_transferencia }}</p>
         </div>
         <div>
             <label style="font-size: 19px;" >Valor:</label>
-            <p>R$ 3489243</p>
+            <p>R$ {{ valor }}</p>
         </div>
         <a href="{{ url_for('home.return_home' )}}">
             <button class="confirmar">Ok</button>

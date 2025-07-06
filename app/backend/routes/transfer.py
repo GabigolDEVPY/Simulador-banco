@@ -35,7 +35,6 @@ def return_transfer_confer():
 
 
 
-
 @transfer_bp.route('/result-transfer/<result>/<valor>', methods=['POST'])
 @login_required    
 def return_result_transfer(result, valor):

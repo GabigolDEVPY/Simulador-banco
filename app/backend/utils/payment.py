@@ -7,7 +7,7 @@ class Payment:
         if dados['chave_pix'] == session["chave_pix"]:
             return 3
         if "validado" in dados:
-                validate_senha = BD_execute.execute_comand("SELECT user_password FROM users WHERE user_login = %s", session["login"])
+                validate_senha = (BD_execute.execute_comand("SELECT user_password FROM users WHERE user_login = %s", session["login"]))[0]['user_password']
                 if validate_senha == dados["user_password"]:
                     result = BD_execute.execute_comand("UPDATE users SET user_found = user_found + %s, user_notifications = user_notifications + %s WHERE chave_pix = %s", dados['valor'], 1, dados["chave_pix"])
                     BD_execute.execute_comand("UPDATE users SET user_found = user_found - %s WHERE user_login = %s", dados['valor'], session['login'])
@@ -24,4 +24,4 @@ class Payment:
 
 
 
-    
+

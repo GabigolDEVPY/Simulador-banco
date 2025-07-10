@@ -34,7 +34,6 @@ def return_transfer_confer():
         return render_template('transfer-verify.html', result=result, valor=float(dados['valor']))
 
 
-
 @transfer_bp.route('/result-transfer/<result>/<valor>', methods=['POST'])
 @login_required    
 def return_result_transfer(result, valor):
@@ -47,6 +46,7 @@ def return_result_transfer(result, valor):
     if result == 4:
         flash("Senha incorreta")
         return redirect(url_for("transfer.return_transfer_page"))
-    dados_result = Payment.dados_result(dados)  
+    session['dados'] = dados_result = Payment.dados_result(dados)  
+    dados_result = session.pop('dados_result', None)
     print(dados_result)
-    return redirect(url_for(render_template(('result-transfer.html', dados=dados_result, valor=valor))
+    return render_template('result-transfer.html', valor=valor, dados=dados_result)

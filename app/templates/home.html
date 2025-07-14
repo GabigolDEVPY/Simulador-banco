@@ -62,13 +62,15 @@
                 </div>
                     <img src="../static/imgs/right-arrow.png" alt="setinha" height="20px">
             </button>
-            <button class="button-inferior">
-                <div class="infos-emprestimo">
-                    <label style="font-size: 17px; font-weight: bold;" for="emprestimo">Jogar no Tigre</label>
-                    <p style="font-size: 15px;">emprestimo disponível de R$ 7.000</p>
-                </div>
-                    <img src="../static/imgs/right-arrow.png" alt="setinha" height="20px">
-            </button>
+            <a href="{{ url_for('tigre.return_tiger_page')}}">
+                <button class="button-inferior">
+                    <div class="infos-emprestimo">
+                        <label style="font-size: 17px; font-weight: bold;" for="emprestimo">Jogar no Tigre</label>
+                        <p style="font-size: 15px;">Jogue no tigre e fique milionário</p>
+                    </div>
+                        <img src="../static/imgs/right-arrow.png" alt="setinha" height="20px">
+                </button>
+            </a>
             <button class="button-inferior">
                 <div class="infos-emprestimo">
                     <label style="font-size: 17px; font-weight: bold;" for="emprestimo">Doar</label>

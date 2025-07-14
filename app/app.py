@@ -6,6 +6,7 @@ from backend.routes.home_bp import home_bp
 from backend.routes.transfer import transfer_bp
 from backend.routes.invest import invest_bp
 from backend.routes.pig import pig_bp
+from backend.routes.tigre import tigre_bp
 
 
 def CreateApp():
@@ -16,6 +17,7 @@ def CreateApp():
     app.register_blueprint(transfer_bp)
     app.register_blueprint(invest_bp)
     app.register_blueprint(pig_bp)
+    app.register_blueprint(tigre_bp)
     return app
 
 app = CreateApp()

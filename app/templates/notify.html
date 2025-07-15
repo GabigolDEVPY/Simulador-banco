@@ -16,13 +16,15 @@
     </div>
     <div class="meio-resto">
         <div class="final">
-            <button class="button-notify">
-                <div class="info-notify">
-                    <label style="font-size: 17px; font-weight: bold;" for="emprestimo">Saldo</label>
-                    <p style="font-size: 15px;">seu limite é de R$ 7.000</p>
-                </div>
-                <label style="margin-bottom: 35px;" for="data">data</label>
-            </button>
+            {% for notify in dados %}
+                <button class="button-notify">
+                    <div class="info-notify">
+                        <label style="font-size: 17px; font-weight: bold;" for="emprestimo">{{ notify.title_notify }}</label>
+                        <p style="font-size: 15px;">{{ notify.subtitle_notify }}</p>
+                    </div>
+                    <label style="margin-bottom: 35px;" for="data">{{ notify.date_notify }}</label>
+                </button>
+            {% endfor %}  
         </div>
     </div>
 </body>

@@ -26,11 +26,10 @@ class Cliente():
             return None
         return result
 
-dados = {
-    "nome": "gabriel",
-    "login": "gabigol",
-    "senha": "12345678",
-    "chave": "gabriel1234"
-}
-
-Cliente.register(dados)
+    @staticmethod
+    def notify():
+        dados = BD_execute.execute_comand("SELECT * FROM user_notifications WHERE user_id = %s", session["user_id"])
+        if dados:
+            return dados
+        print(dados)
+        

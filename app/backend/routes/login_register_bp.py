@@ -23,6 +23,7 @@ def return_login():
         result = Cliente.login(dados)
         if result:
             result = result[0]
+            session['user_id'] = result['user_id']
             session['chave_pix'] = result['chave_pix']
             session['login'] = result['user_login']
             print(session['chave_pix'])

@@ -18,7 +18,8 @@ def return_home():
 @home_bp.route('/notify', methods=["GET"])
 @login_required
 def return_notify():
-    return render_template('notify.html')
+    dados = Cliente.notify()
+    return render_template('notify.html', dados=dados)
 
 
 @home_bp.route('/history', methods=["GET"])

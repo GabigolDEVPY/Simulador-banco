@@ -15,7 +15,7 @@ class Payment:
                     result = BD_execute.execute_comand("UPDATE users SET user_found = user_found + %s, user_notifications = user_notifications + %s WHERE chave_pix = %s", dados['valor'], 1, dados["chave_pix"])
                     BD_execute.execute_comand("UPDATE users SET user_found = user_found - %s WHERE user_login = %s", dados['valor'], session['login'])
                     dados_notify = BD_execute.execute_comand("SELECT user_id FROM users WHERE chave_pix = %s", dados["chave_pix"])
-                    notify = Notify.create_notify(str((dados_notify)[0]["user_id"]), "Transferência", f"Você recebeu uma transferência de {dados['valor']}")
+                    notify = Notify.create_notify(str((dados_notify)[0]["user_id"]), "Transferência", f"Você recebeu uma transferência de R$ {dados['valor']}")
                     return
                 return 4
         validate_valor = BD_execute.execute_comand("SELECT user_found FROM users WHERE user_login = %s", session['login'])

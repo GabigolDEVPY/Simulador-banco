@@ -31,5 +31,9 @@ class Cliente():
         dados = BD_execute.execute_comand("SELECT * FROM user_notifications WHERE user_id = %s", session["user_id"])
         if dados:
             return dados
-        print(dados)
-        
+        return None
+
+    def zerar_notifys(user_id):
+        result = BD_execute.execute_comand("UPDATE users SET user_notifications = 0 WHERE user_id = %s", user_id)
+
+

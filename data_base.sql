@@ -67,3 +67,10 @@ INSERT INTO users (user_name, user_login, user_password, chave_pix) VALUES (
     "12345678",
     "gabigol"
 )
+
+INSERT INTO user_notifications (user_id, title_notify, subtitle_notify) VALUES (
+    "468",
+    "pix zé",
+    "olha pixxxxxxxxxxx de 1000 reais zé"
+    )
+

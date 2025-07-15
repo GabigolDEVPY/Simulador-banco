@@ -19,7 +19,10 @@ def return_home():
 @login_required
 def return_notify():
     dados = Cliente.notify()
-    return render_template('notify.html', dados=dados)
+    if dados:
+        Cliente.zerar_notifys(session["user_id"])
+        return render_template('notify.html', dados=dados)
+    return render_template('notify.html')
 
 
 @home_bp.route('/history', methods=["GET"])

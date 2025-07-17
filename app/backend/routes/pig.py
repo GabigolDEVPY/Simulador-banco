@@ -43,8 +43,9 @@ def return_pig_create():
 @pig_bp.route('/pigs/pig/guardarpig/<int:id>', methods=["GET"])
 @login_required
 def return_guardar_pig(id):
-      print(id)
-      for caixinha in caixinhas:
+    caixinhas = Pig.return_pigs()
+    print(id)
+    for caixinha in caixinhas:
         if caixinha['id'] == id:
             return render_template('guardarpig.html', caixinha=caixinha)
 
@@ -56,6 +57,7 @@ def guardar_valor(id):
     if request.method == 'POST':
         dados = request.form.to_dict()
         print(dados, "id", id)
+        caixinhas = Pig.return_pigs()
         for caixinha in caixinhas:
             if caixinha['id'] == id:
                 caixinha['valor'] = (caixinha['valor'] + int(dados['value']))
@@ -67,6 +69,7 @@ def guardar_valor(id):
 @login_required
 def return_resgatar_valor(id):
         print(id)
+        caixinhas = Pig.return_pigs()
         for caixinha in caixinhas:
             if caixinha['id'] == id:
                 return render_template('resgatarpig.html', caixinha=caixinha)         
@@ -79,6 +82,7 @@ def resgatar_valor(id):
     if request.method == 'POST':
         dados = request.form.to_dict()
         print(dados, "id", id)
+        caixinhas = Pig.return_pigs()
         for caixinha in caixinhas:
             if caixinha['id'] == id:
                 caixinha['valor'] = (caixinha['valor'] - int(dados['value']))
@@ -89,6 +93,7 @@ def resgatar_valor(id):
 @pig_bp.route('/pigs/pig/deletepig/<int:id>', methods=["GET"])
 @login_required
 def delete_pig(id):
+    caixinhas = Pig.return_pigs()
     for caixinha in caixinhas:
         if caixinha['id'] == id:
             caixinhas.remove(caixinha)

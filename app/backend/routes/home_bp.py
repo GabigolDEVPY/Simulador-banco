@@ -28,6 +28,9 @@ def return_notify():
 @home_bp.route('/history', methods=["GET"])
 @login_required
 def return_history():
+    dados = Cliente.history()
+    if dados:
+        return render_template('history.html', dados=dados)
     return render_template('history.html')
 
 

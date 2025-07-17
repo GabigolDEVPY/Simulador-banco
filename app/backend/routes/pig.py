@@ -1,19 +1,16 @@
 from flask import Blueprint, render_template, request
 from..utils.auth import login_required
+from ..utils.pig import Pig
 
 pig_bp = Blueprint('pig', __name__,template_folder='../../templates/pig')
 
 imgs_caixinha = ["/static/imgs-caixinha/viagem.jpeg", "/static/imgs-caixinha/carro.jpg", "/static/imgs-caixinha/casa.jpg", "/static/imgs-caixinha/casamento.webp", "/static/imgs-caixinha/cinema.webp", "/static/imgs-caixinha/cofre.jpeg", "/static/imgs-caixinha/moto.jpg", "/static/imgs-caixinha/moveis.jpg", "/static/imgs-caixinha/praia.jpg", "/static/imgs-caixinha/reforma.webp", "/static/imgs-caixinha/reserva.jpeg", "/static/imgs-caixinha/templo.jpg", "/static/imgs-caixinha/videogame.jpg"]
 
-caixinhas = [
-        {"id": 1, "nome": "Viagem", "valor": 1300, "imagem": "/static/imgs-caixinha/viagem.jpeg", "valor_investido": 1200, "meta": 20000, "ganhos": 254},        
-        {"id": 5, "nome": "Avião", "valor": 10000, "imagem": "/static/imgs-caixinha/carro.jpg", "valor_investido": 3000, "meta": 23644, "ganhos": 212},        
-        {"id": 9, "nome": "Carro", "valor": 2500, "imagem": "/static/imgs-caixinha/videogame.jpg", "valor_investido": 5000, "meta": 50078, "ganhos": 234}             
-]
 
 @pig_bp.route('/pigs', methods=['GET'])
 @login_required
 def return_pigs_page():
+    caixinhas = Pig.return_pigs()
     return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 4 - len(caixinhas) )
 
 
@@ -22,8 +19,9 @@ def return_pigs_page():
 @pig_bp.route('/pigs/pig/<int:id>', methods=['GET'])
 @login_required
 def return_pig_page(id):
+    caixinhas = Pig.return_pigs()
     for caixa in caixinhas:
-        if caixa['id'] == id:
+        if caixa['pig_id'] == id:
             return render_template('pig.html', caixinha=caixa)
         
 
@@ -32,13 +30,12 @@ def return_pig_page(id):
 @login_required
 def return_pig_create():
     if request.method == "GET":
-      return render_template('criarpig.html', imgs_caixinha=imgs_caixinha)      
+        return render_template('criarpig.html', imgs_caixinha=imgs_caixinha)      
     if request.method == "POST":
         dados = request.form.to_dict()
-        caixinhas.append(
-            {"id": 6, "nome": dados['nome'], "valor": dados['inicial'], "imagem": dados['imagem'], "valor_investido": dados['inicial'], "meta": dados['meta'], "ganhos": 0}
-        )
+        Pig.criar_pig(dados)
         print(dados)
+        caixinhas = Pig.return_pigs()
         return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 4 - len(caixinhas))
 
 
@@ -73,7 +70,7 @@ def return_resgatar_valor(id):
         for caixinha in caixinhas:
             if caixinha['id'] == id:
                 return render_template('resgatarpig.html', caixinha=caixinha)         
-          
+
 
 
 @pig_bp.route('/pigs/pig/resgatarpig/<int:id>', methods=['POST'])

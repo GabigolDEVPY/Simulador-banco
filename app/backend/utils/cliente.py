@@ -32,8 +32,21 @@ class Cliente():
         if dados:
             return dados
         return None
-
+    
+    @staticmethod
     def zerar_notifys(user_id):
         result = BD_execute.execute_comand("UPDATE users SET user_notifications = 0 WHERE user_id = %s", user_id)
 
+    @staticmethod
+    def create_notify(user_id, title_notify, subtitle_notify):
+        dados = BD_execute.execute_comand("INSERT INTO user_notifications (user_id, title_notify, subtitle_notify) VALUES (%s, %s, %s)", user_id, title_notify, subtitle_notify)
+        return
+    
+    @staticmethod
+    def create_history(user_id, title_history, subtitle_history):
+        history = BD_execute.execute_comand("INSERT INTO user_history (user_id, title_history, subtitle_history) VALUES (%s, %s, %s)", user_id, title_history, subtitle_history)
 
+    @staticmethod
+    def history():
+        dados = BD_execute.execute_comand("SELECT * FROM user_history WHERE user_id = %s", session["user_id"])
+        return dados

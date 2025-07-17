@@ -16,13 +16,15 @@
     </div>
     <div class="meio-resto">
         <div class="final">
-            <button class="button-notify">
-                <div class="info-notify">
-                    <label style="font-size: 17px; font-weight: bold;">Transferência realizada</label>
-                    <p style="font-size: 15px;">Você relizou uma transferência de R$ 7.000</p>
-                </div>
-                <label style="margin-bottom: 35px;" for="data">11/05/2025</label>
-            </button>
+            {% for dado in dados %}
+                <button class="button-notify">
+                    <div class="info-notify">
+                        <label style="font-size: 17px; font-weight: bold;">{{ dado.title_history }}</label>
+                        <p style="font-size: 15px;">{{ dado.subtitle_history }}</p>
+                    </div>
+                    <label style="margin-bottom: 35px;" for="data">{{ dado.date_history }}</label>
+                </button>
+            {% endfor %}    
         </div>
     </div>
 </body>

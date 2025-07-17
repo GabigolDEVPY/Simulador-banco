@@ -1,0 +1,60 @@
+<mxfile host="65bd71144e">
+    <diagram id="1dBXHy1l_igGjsin8KpD" name="Page-1">
+        <mxGraphModel dx="1179" dy="593" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="Local Machine" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry y="70" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="Web Server&#xa;(localhost:5000)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry y="250" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="Tunneling Service&#xa;(e.g., Ngrok, Cloudflare)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="290" y="110" width="180" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="Public URL&#xa;(e.g., xyz.ngrok.io)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="610" y="200" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="DNS Provider&#xa;(e.g., Namecheap)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="780" y="10" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="Custom Domain&#xa;(e.g., example.com)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=12;" parent="1" vertex="1">
+                    <mxGeometry x="750" y="440" width="160" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="Internet User" style="shape=actor;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=14;" parent="1" vertex="1">
+                    <mxGeometry x="1030" y="150" width="80" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="9" value="1. Runs site" style="endArrow=block;html=1;" parent="1" source="2" target="3" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="2. Tunnel opened" style="endArrow=block;html=1;" parent="1" source="3" target="4" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="3. Gets public URL" style="endArrow=block;html=1;" parent="1" source="4" target="5" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="12" value="4. DNS points to URL" style="endArrow=block;html=1;" parent="1" source="5" target="6" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="5. Resolves to domain" style="endArrow=block;html=1;" parent="1" source="6" target="7" edge="1">
+                    <mxGeometry relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="14" value="6. User accesses site" style="endArrow=block;html=1;" parent="1" source="8" target="7" edge="1">
+                    <mxGeometry x="-0.0992" y="-22" relative="1" as="geometry">
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="15" value="7. Routed to localhost" style="endArrow=block;dashed=1;html=1;" parent="1" source="7" target="3" edge="1">
+                    <mxGeometry x="0.083" y="100" relative="1" as="geometry">
+                        <Array as="points">
+                            <mxPoint x="330" y="380"/>
+                            <mxPoint x="130" y="300"/>
+                        </Array>
+                        <mxPoint as="offset"/>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>

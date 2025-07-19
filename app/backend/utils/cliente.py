@@ -50,3 +50,8 @@ class Cliente():
     def history():
         dados = BD_execute.execute_comand("SELECT * FROM user_history WHERE user_id = %s", session["user_id"])
         return dados
+
+    @staticmethod
+    def value_user():
+        value = (BD_execute.execute_comand("SELECT user_found FROM users WHERE user_id = %s", session['user_id']))[0]['user_found']
+        return value

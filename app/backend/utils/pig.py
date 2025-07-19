@@ -12,4 +12,4 @@ class Pig:
     @staticmethod
     def criar_pig(dados):
         values = (session["user_id"], dados["meta"], 0, dados["imagem"], dados["nome"])
-        BD_execute.execute_comand("INSERT INTO pigs (user_id, meta_pig, total_bruto, image_pig, nome_pig) VALUES (%s, %s, %s, %s, %s)", values)
+        BD_execute.execute_comand("INSERT INTO pigs (user_id, meta_pig, total_bruto, image_pig, nome_pig) VALUES (%s, %s, %s, %s, %s)", *values)

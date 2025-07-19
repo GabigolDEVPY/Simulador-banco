@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request
 from..utils.auth import login_required
 from ..utils.pig import Pig
+from ..utils.cliente import Cliente
 
 pig_bp = Blueprint('pig', __name__,template_folder='../../templates/pig')
 
@@ -14,13 +15,12 @@ def return_pigs_page():
     return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 4 - len(caixinhas) )
 
 
-
-
 @pig_bp.route('/pigs/pig/<int:id>', methods=['GET'])
 @login_required
 def return_pig_page(id):
     caixinhas = Pig.return_pigs()
     for caixa in caixinhas:
+        print(caixa)
         if caixa['pig_id'] == id:
             return render_template('pig.html', caixinha=caixa)
         
@@ -46,8 +46,9 @@ def return_guardar_pig(id):
     caixinhas = Pig.return_pigs()
     print(id)
     for caixinha in caixinhas:
-        if caixinha['id'] == id:
-            return render_template('guardarpig.html', caixinha=caixinha)
+        if caixinha['pig_id'] == id:
+            value = Cliente.value_user()
+            return render_template('guardarpig.html', caixinha=caixinha, value=value)
 
 
 

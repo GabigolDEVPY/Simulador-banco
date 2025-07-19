@@ -15,26 +15,26 @@
             <h3 style="margin-top: 17px; margin-left:20px" >Caixinhas</h3>
     </div>
     <div class="meio-resto">
-        <img src="{{ caixinha.imagem }}" alt="imagem da caixinha" style="object-fit: fill; border-radius: 10px; margin-top:10px;" height="230px" width="390px">
+        <img src="{{ caixinha.image_pig }}" alt="imagem da caixinha" style="object-fit: fill; border-radius: 10px; margin-top:10px;" height="230px" width="390px">
         <div class="infos">
             <h4>Total Bruto</h4>
-            <h4 style="font-weight:lighter;" >R$ {{ caixinha.valor }}</h4>
+            <h4 style="font-weight:lighter;" >R$ {{ caixinha.total_bruto }}</h4>
             <h5 style="margin-top: 20px;">Valor investido</h5>
             <h5 style="margin-top: 5px; font-weight:lighter;" >R$ {{ caixinha.valor_investido }}</h5>
             <h5 style="margin-top: 20px;">Meta</h5>
-            <h5 style="margin-top: 5px; font-weight:lighter;" >R$ {{ caixinha.meta }}</h5>
+            <h5 style="margin-top: 5px; font-weight:lighter;" >R$ {{ caixinha.meta_pig }}</h5>
             <div style="display: flex; gap: 5px">
                 <img style="margin-top: 7px;" src="/static/imgs/up-arrow.png" alt="setinha verde do investimento" height="14px">
-                <h6 style="margin-top: 10px; font-weight:lighter; color: green;">R$ {{ caixinha.ganhos }} Ganhos</h6>
+                <h6 style="margin-top: 10px; font-weight:lighter; color: green;">R$ {{ caixinha.ganhos_total }} Ganhos</h6>
             </div><br><br>
             <div class="direction">
-                <a style="text-decoration: none;" href="{{ url_for('pig.return_guardar_pig', id=caixinha.id )}}">
+                <a style="text-decoration: none;" href="{{ url_for('pig.return_guardar_pig', id=caixinha.pig_id )}}">
                     <button class="confirmar">Guardar</button>
                 </a>
-                <a style="text-decoration: none;" href="{{ url_for('pig.return_resgatar_valor', id=caixinha.id )}}">
+                <a style="text-decoration: none;" href="{{ url_for('pig.return_resgatar_valor', id=caixinha.pig_id )}}">
                     <button class="confirmar">Resgatar</button>
                 </a>
-                <a href="{{ url_for('pig.delete_pig', id=caixinha.id)}}">
+                <a href="{{ url_for('pig.delete_pig', id=caixinha.pig_id)}}">
                     <button class="confirmar" style="width: 50px">
                         <img src="/static/imgs/trash.png" alt="apagar caixinha" height="25">
                     </button>

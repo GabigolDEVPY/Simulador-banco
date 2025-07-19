@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="nav-superior" style="justify-content: flex-start;" >
-        <a href="{{ url_for('pig.return_pig_page', id=caixinha.id) }}">
+        <a href="{{ url_for('pig.return_pig_page', id=caixinha.pig_id) }}">
             <button style="margin-left: 0px;" class="button-return"></button>
         </a>
             <h3 style="margin-top: 17px; margin-left:20px" >Guardar Dinheiro</h3>
@@ -17,16 +17,16 @@
     <div class="meio-resto">
         <div class="infos">
             <h4>Total na Carteira</h4>
-            <h4 style="font-weight:lighter;">R$ 10000</h4><br>
+            <h4 style="font-weight:lighter;">{{ value }}</h4><br>
 
             <h4>Total Caixinha</h4>
-            <h4 style="font-weight:lighter;" >R$ {{ caixinha.valor }}</h4>
+            <h4 style="font-weight:lighter;" >R$ {{ caixinha.total_bruto }}</h4>
             <div style="display: flex; gap: 5px">
                 <img style="margin-top: 7px;" src="/static/imgs/up-arrow.png" alt="setinha verde do investimento" height="14px">
                 <h6 style="margin-top: 10px; font-weight:lighter; color: green;">R$ {{ caixinha.ganhos }}</h6>
             </div><br><br>
 
-            <form action="{{ url_for('pig.guardar_valor', id=caixinha.id) }}" method="post">
+            <form action="{{ url_for('pig.guardar_valor', id=caixinha.pig_id) }}" method="post">
                 <div>
                     <label style="font-size: 19px;" >Valor:</label>
                     <input name="value" class="money" style="font-size: 16px" type="number" placeholder="R$ 0,00">
@@ -39,7 +39,7 @@
     
                 <div style="margin-top: 200px;" class="direction">
                     <button type="submit" class="confirmar">Guardar</button>
-                    <a class="confirmar" href="{{ url_for('pig.return_pig_page', id=caixinha.id) }}" style="text-decoration: none;">Cancelar</a>   
+                    <a class="confirmar" href="{{ url_for('pig.return_pig_page', id=caixinha.pig_id) }}" style="text-decoration: none;">Cancelar</a>   
                 </div>
             </form>
 

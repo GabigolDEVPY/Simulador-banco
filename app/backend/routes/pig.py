@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, url_for, redirect
 from..utils.auth import login_required
 from ..utils.pig import Pig
 from ..utils.cliente import Cliente
@@ -20,7 +20,6 @@ def return_pigs_page():
 def return_pig_page(id):
     caixinhas = Pig.return_pigs()
     for caixa in caixinhas:
-        print(caixa)
         if caixa['pig_id'] == id:
             return render_template('pig.html', caixinha=caixa)
         
@@ -44,7 +43,6 @@ def return_pig_create():
 @login_required
 def return_guardar_pig(id):
     caixinhas = Pig.return_pigs()
-    print(id)
     for caixinha in caixinhas:
         if caixinha['pig_id'] == id:
             value = Cliente.value_user()
@@ -57,12 +55,11 @@ def return_guardar_pig(id):
 def guardar_valor(id):
     if request.method == 'POST':
         dados = request.form.to_dict()
-        print(dados, "id", id)
         caixinhas = Pig.return_pigs()
         for caixinha in caixinhas:
-            if caixinha['id'] == id:
-                caixinha['valor'] = (caixinha['valor'] + int(dados['value']))
-                return render_template('pig.html', caixinha=caixinha)    
+            if caixinha['pig_id'] == id:
+                Pig.guardar_pig(dados["value"], id)
+                return redirect(url_for('pig.return_pig_page', id=caixinha['pig_id']))
 
 
 # RESGATAR VALORRRRRRRRRRRRRRRRRRRRRRRRRRR

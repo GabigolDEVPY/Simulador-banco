@@ -12,7 +12,9 @@ imgs_caixinha = ["/static/imgs-caixinha/viagem.jpeg", "/static/imgs-caixinha/car
 @login_required
 def return_pigs_page():
     caixinhas = Pig.return_pigs()
-    return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 4 - len(caixinhas) )
+    if caixinhas:
+        return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 4 - len(caixinhas) )
+    return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 0)
 
 
 @pig_bp.route('/pigs/pig/<int:id>', methods=['GET'])

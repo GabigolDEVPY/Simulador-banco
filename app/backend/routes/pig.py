@@ -12,8 +12,9 @@ imgs_caixinha = ["/static/imgs-caixinha/viagem.jpeg", "/static/imgs-caixinha/car
 @login_required
 def return_pigs_page():
     caixinhas = Pig.return_pigs()
+    total_bruto = Pig.return_bruto()
     if caixinhas:
-        return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 4 - len(caixinhas) )
+        return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 4 - len(caixinhas), total_bruto=total_bruto)
     return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 0)
 
 
@@ -71,7 +72,7 @@ def return_resgatar_valor(id):
         print(id)
         caixinhas = Pig.return_pigs()
         for caixinha in caixinhas:
-            if caixinha['id'] == id:
+            if caixinha['pig_id'] == id:
                 return render_template('resgatarpig.html', caixinha=caixinha)         
 
 
@@ -84,7 +85,7 @@ def resgatar_valor(id):
         print(dados, "id", id)
         caixinhas = Pig.return_pigs()
         for caixinha in caixinhas:
-            if caixinha['id'] == id:
+            if caixinha['pig_id'] == id:
                 caixinha['valor'] = (caixinha['valor'] - int(dados['value']))
                 return render_template('pig.html', caixinha=caixinha)    
 
@@ -93,8 +94,8 @@ def resgatar_valor(id):
 @pig_bp.route('/pigs/pig/deletepig/<int:id>', methods=["GET"])
 @login_required
 def delete_pig(id):
+    result = Pig.deletar_pig(id)
     caixinhas = Pig.return_pigs()
-    for caixinha in caixinhas:
-        if caixinha['id'] == id:
-            caixinhas.remove(caixinha)
-    return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 4 - len(caixinhas))
+    if caixinhas:
+        return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 4 - len(caixinhas))
+    return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas=0)

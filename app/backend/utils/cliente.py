@@ -16,7 +16,6 @@ class Cliente():
             return dados
         return None
     
-
     @staticmethod
     def register(dados):
         comand = "INSERT INTO users (user_name, user_login, user_password, chave_pix) VALUES (%s, %s, %s, %s)"

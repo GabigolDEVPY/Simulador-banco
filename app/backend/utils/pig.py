@@ -28,9 +28,11 @@ class Pig:
 
     @staticmethod
     def guardar_pig(valor, pig_id):
-        comand = ("UPDATE pigs SET total_bruto = total_bruto + %s WHERE pig_id = %s AND user_id = %s")    
-        values = (valor, pig_id, session['user_id'])
-        BD_execute.execute_comand(comand, *values)
+        value_cliente = Cliente.value_user()
+        if value_cliente >= float(valor):
+            comand = BD_execute.execute_comand("UPDATE pigs SET total_bruto = total_bruto + %s WHERE pig_id = %s AND user_id = %s", valor, pig_id, session['user_id'])
+            return
+        return 0    
         
     @staticmethod
     def deletar_pig(id):

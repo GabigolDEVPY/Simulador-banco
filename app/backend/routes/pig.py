@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, url_for, redirect
+from flask import Blueprint, render_template, request, url_for, redirect, flash
 from..utils.auth import login_required
 from ..utils.pig import Pig
 from ..utils.cliente import Cliente
@@ -41,22 +41,22 @@ def return_pig_create():
         return redirect((url_for("pig.return_pigs_page")))
 
 
-# GAURDAR VALOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOR
+# value
 @pig_bp.route('/pigs/pig/guardarpig/<int:id>', methods=["GET"])
 @login_required
 def return_guardar_pig(id):
     return render_template('guardarpig.html', caixinha=Pig.return_pig(id), value=Cliente.value_user())
 
 
-# Rota de Guardar money
+# Route 
 @pig_bp.route('/pigs/pig/guardarpig/<int:id>', methods=['POST'])
 @login_required
 def guardar_valor(id):
-    if request.method == 'POST':
         dados = request.form.to_dict()
-        print("dadossssssssssssssssssssssssss", dados)
-        caixinha = Pig.return_pig(id)
-        Pig.guardar_pig(dados["value"], id)
+        data = Pig.guardar_pig(dados["value"], id)
+        if data == 0:
+            flash("Valor insuficiente na conta!")
+            return redirect(url_for('pig.return_guardar_pig', id=id))
         return redirect(url_for('pig.return_pig_page', id=id))
 
 

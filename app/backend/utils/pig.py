@@ -12,8 +12,7 @@ class Pig:
     
     @staticmethod
     def return_pig(id):
-        pig = BD_execute.execute_comand("SELECT * FROM pigs WHERE user_id = %s AND pig_id = %s", session["user_id"], id)
-        return pig[0]
+        return (BD_execute.execute_comand("SELECT * FROM pigs WHERE user_id = %s AND pig_id = %s", session["user_id"], id))[0]
     
     @staticmethod
     def return_bruto():

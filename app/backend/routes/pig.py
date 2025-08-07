@@ -21,10 +21,7 @@ def return_pigs_page():
 @pig_bp.route('/pigs/pig/<int:id>', methods=['GET'])
 @login_required
 def return_pig_page(id):
-    caixinhas = Pig.return_pigs()
-    for caixa in caixinhas:
-        if caixa['pig_id'] == id:
-            return render_template('pig.html', caixinha=caixa)
+    return render_template('pig.html', caixinha=Pig.return_pig(id))
         
 
 # CRIAR PORCOOOOOOOOOOOOOOOOOOOOOOOOOOo

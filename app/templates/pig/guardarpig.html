@@ -29,12 +29,12 @@
             <form action="{{ url_for('pig.guardar_valor', id=caixinha.pig_id) }}" method="post">
                 <div>
                     <label style="font-size: 19px;" >Valor:</label>
-                    <input name="value" class="money" style="font-size: 16px" type="number" placeholder="R$ 0,00">
+                    <input name="value" class="money" style="font-size: 16px" type="number" placeholder="R$ 0,00" required>
                 </div>
     
                 <div style="margin-top: 20px;">
                     <label style="font-size: 19px;" >Senha:</label>
-                    <input name="senha" class="money" style="font-size: 16px" type="password" placeholder="senha...">
+                    <input name="senha" class="money" style="font-size: 16px" type="password" placeholder="senha..." required>
                 </div>
     
                 <div style="margin-top: 200px;" class="direction">

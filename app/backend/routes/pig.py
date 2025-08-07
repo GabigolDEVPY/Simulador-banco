@@ -12,7 +12,7 @@ imgs_caixinha = ["/static/imgs-caixinha/viagem.jpeg", "/static/imgs-caixinha/car
 @login_required
 def return_pigs_page():
     caixinhas = Pig.return_pigs()
-    total_bruto = Pig.return_bruto()
+    total_bruto = Pig.return_bruto() if Pig.return_bruto() else 0
     if caixinhas:
         return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 4 - len(caixinhas), total_bruto=total_bruto)
     return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 0)
@@ -38,43 +38,36 @@ def return_pig_create():
         Pig.criar_pig(dados)
         print(dados)
         caixinhas = Pig.return_pigs()
-        return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 4 - len(caixinhas))
+        return redirect((url_for("pig.return_pigs_page")))
 
 
 # GAURDAR VALOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOR
 @pig_bp.route('/pigs/pig/guardarpig/<int:id>', methods=["GET"])
 @login_required
 def return_guardar_pig(id):
-    caixinhas = Pig.return_pigs()
-    for caixinha in caixinhas:
-        if caixinha['pig_id'] == id:
-            value = Cliente.value_user()
-            return render_template('guardarpig.html', caixinha=caixinha, value=value)
+    return render_template('guardarpig.html', caixinha=Pig.return_pig(id), value=Cliente.value_user())
 
 
-
+# Rota de Guardar money
 @pig_bp.route('/pigs/pig/guardarpig/<int:id>', methods=['POST'])
 @login_required
 def guardar_valor(id):
     if request.method == 'POST':
         dados = request.form.to_dict()
-        caixinhas = Pig.return_pigs()
-        for caixinha in caixinhas:
-            if caixinha['pig_id'] == id:
-                Pig.guardar_pig(dados["value"], id)
-                return redirect(url_for('pig.return_pig_page', id=caixinha['pig_id']))
+        print("dadossssssssssssssssssssssssss", dados)
+        caixinha = Pig.return_pig(id)
+        Pig.guardar_pig(dados["value"], id)
+        return redirect(url_for('pig.return_pig_page', id=id))
 
 
 # RESGATAR VALORRRRRRRRRRRRRRRRRRRRRRRRRRR
 @pig_bp.route('/pigs/pig/resgatarpig/<int:id>', methods=['GET'])
 @login_required
 def return_resgatar_valor(id):
-        print(id)
-        caixinhas = Pig.return_pigs()
-        for caixinha in caixinhas:
-            if caixinha['pig_id'] == id:
-                return render_template('resgatarpig.html', caixinha=caixinha)         
-
+    print("iddd", id)
+    caixinha = Pig.return_pig(id)
+    print(caixinha)
+    return render_template('resgatarpig.html', caixinha=caixinha)         
 
 
 @pig_bp.route('/pigs/pig/resgatarpig/<int:id>', methods=['POST'])

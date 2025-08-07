@@ -3,11 +3,17 @@ from flask import session
 from datetime import datetime
 from ..utils.cliente import Cliente
 
+
 class Pig:
     @staticmethod
     def return_pigs():
         pigs = BD_execute.execute_comand("SELECT * FROM pigs WHERE user_id = %s", session["user_id"])
         return pigs
+    
+    @staticmethod
+    def return_pig(id):
+        pig = BD_execute.execute_comand("SELECT * FROM pigs WHERE user_id = %s AND pig_id = %s", session["user_id"], id)
+        return pig[0]
     
     @staticmethod
     def return_bruto():

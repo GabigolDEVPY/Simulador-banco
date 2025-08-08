@@ -26,13 +26,16 @@ class Pig:
         BD_execute.execute_comand("INSERT INTO pigs (user_id, meta_pig, total_bruto, image_pig, nome_pig) VALUES (%s, %s, %s, %s, %s)", *values)
 
     @staticmethod
-    def guardar_pig(valor, pig_id):
+    def guardar_pig(dados, pig_id):
         value_cliente = Cliente.value_user()
-        if value_cliente >= float(valor):
-            comand = BD_execute.execute_comand("UPDATE pigs SET total_bruto = total_bruto + %s WHERE pig_id = %s AND user_id = %s", valor, pig_id, session['user_id'])
-            BD_execute.execute_comand("UPDATE pigs SET total_bruto = total_bruto + %s WHERE pig_id = %s AND user_id = %s", valor, pig_id, session['user_id'])
-            return
-        return 0    
+        validate = Cliente.validate_senha(dados["senha"])
+        if validate:
+            if value_cliente >= float((dados)["value"]):
+                comand = BD_execute.execute_comand("UPDATE pigs SET total_bruto = total_bruto + %s WHERE pig_id = %s AND user_id = %s", float((dados)["value"]), pig_id, session['user_id'])
+                Cliente.discount_user(float(dados["value"]))
+                return
+            return 0    
+        return 2
         
     @staticmethod
     def deletar_pig(id):

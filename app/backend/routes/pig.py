@@ -15,43 +15,39 @@ def return_pigs_page():
     return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 4 - num_caixinhas, total_bruto=Pig.return_bruto())
 
 
-
 @pig_bp.route('/pigs/pig/<int:id>', methods=['GET'])
 @login_required
 def return_pig_page(id):
     return render_template('pig.html', caixinha=Pig.return_pig(id))
         
 
-# CRIAR PORCOOOOOOOOOOOOOOOOOOOOOOOOOOo
 @pig_bp.route('/pig/criarpig', methods=["GET", "POST"])
 @login_required
 def return_pig_create():
     if request.method == "GET":
         return render_template('criarpig.html', imgs_caixinha=imgs_caixinha)      
     if request.method == "POST":
-        dados = request.form.to_dict()
-        Pig.criar_pig(dados)
-        print(dados)
-        caixinhas = Pig.return_pigs()
+        Pig.criar_pig(request.form.to_dict())
         return redirect((url_for("pig.return_pigs_page")))
 
 
-# value
 @pig_bp.route('/pigs/pig/guardarpig/<int:id>', methods=["GET"])
 @login_required
 def return_guardar_pig(id):
     return render_template('guardarpig.html', caixinha=Pig.return_pig(id), value=Cliente.value_user())
 
 
-# Route 
 @pig_bp.route('/pigs/pig/guardarpig/<int:id>', methods=['POST'])
 @login_required
 def guardar_valor(id):
-        dados = request.form.to_dict()
-        data = Pig.guardar_pig(dados["value"], id)
-        if data == 0:
+        result = Pig.guardar_pig(request.form.to_dict(), id)
+        if result == 0:
             flash("Valor insuficiente na conta!")
             return redirect(url_for('pig.return_guardar_pig', id=id))
+        elif result == 2:
+            flash("Senha incorreta")
+            return redirect(url_for('pig.return_guardar_pig', id=id))
+        
         return redirect(url_for('pig.return_pig_page', id=id))
 
 

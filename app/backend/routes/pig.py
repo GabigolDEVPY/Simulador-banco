@@ -47,7 +47,6 @@ def guardar_valor(id):
         elif result == 2:
             flash("Senha incorreta")
             return redirect(url_for('pig.return_guardar_pig', id=id))
-        
         return redirect(url_for('pig.return_pig_page', id=id))
 
 

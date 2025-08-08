@@ -54,3 +54,7 @@ class Cliente():
     def value_user():
         value = (BD_execute.execute_comand("SELECT user_found FROM users WHERE user_id = %s", session['user_id']))[0]['user_found']
         return value
+    
+    def discount_user(value):
+        BD_execute.execute_comand("UPDATE users SET value_user = value_user - %s WHERE user_id = %s", value, session["user_id"])
+        return

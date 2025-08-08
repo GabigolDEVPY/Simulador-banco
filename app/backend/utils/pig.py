@@ -8,7 +8,8 @@ class Pig:
     @staticmethod
     def return_pigs():
         pigs = BD_execute.execute_comand("SELECT * FROM pigs WHERE user_id = %s", session["user_id"])
-        return pigs
+        num_caixinhas = len(pigs) if pigs else 0
+        return pigs, num_caixinhas
     
     @staticmethod
     def return_pig(id):
@@ -17,8 +18,7 @@ class Pig:
     @staticmethod
     def return_bruto():
         total_bruto = (BD_execute.execute_comand("SELECT SUM(total_bruto) AS total FROM pigs WHERE user_id = %s", session['user_id']))[0]["total"]
-        print(total_bruto)
-        return total_bruto
+        return total_bruto if total_bruto else 0
     
     @staticmethod
     def criar_pig(dados):
@@ -30,6 +30,7 @@ class Pig:
         value_cliente = Cliente.value_user()
         if value_cliente >= float(valor):
             comand = BD_execute.execute_comand("UPDATE pigs SET total_bruto = total_bruto + %s WHERE pig_id = %s AND user_id = %s", valor, pig_id, session['user_id'])
+            BD_execute.execute_comand("UPDATE pigs SET total_bruto = total_bruto + %s WHERE pig_id = %s AND user_id = %s", valor, pig_id, session['user_id'])
             return
         return 0    
         

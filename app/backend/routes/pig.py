@@ -11,11 +11,9 @@ imgs_caixinha = ["/static/imgs-caixinha/viagem.jpeg", "/static/imgs-caixinha/car
 @pig_bp.route('/pigs', methods=['GET'])
 @login_required
 def return_pigs_page():
-    caixinhas = Pig.return_pigs()
-    total_bruto = Pig.return_bruto() if Pig.return_bruto() else 0
-    if caixinhas:
-        return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 4 - len(caixinhas), total_bruto=total_bruto)
-    return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 0)
+    caixinhas, num_caixinhas = Pig.return_pigs()
+    return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 4 - num_caixinhas, total_bruto=Pig.return_bruto())
+
 
 
 @pig_bp.route('/pigs/pig/<int:id>', methods=['GET'])
@@ -84,8 +82,6 @@ def resgatar_valor(id):
 @pig_bp.route('/pigs/pig/deletepig/<int:id>', methods=["GET"])
 @login_required
 def delete_pig(id):
-    result = Pig.deletar_pig(id)
-    caixinhas = Pig.return_pigs()
-    if caixinhas:
-        return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas= 4 - len(caixinhas))
-    return render_template('pigs.html', caixinhas=caixinhas, num_caixinhas=0)
+    Pig.deletar_pig(id)
+    return redirect(url_for("pig.return_pigs_page"))
+

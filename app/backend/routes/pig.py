@@ -54,23 +54,21 @@ def guardar_valor(id):
 @pig_bp.route('/pigs/pig/resgatarpig/<int:id>', methods=['GET'])
 @login_required
 def return_resgatar_valor(id):
-    print("iddd", id)
-    caixinha = Pig.return_pig(id)
-    print(caixinha)
-    return render_template('resgatarpig.html', caixinha=caixinha)         
+    return render_template('resgatarpig.html', caixinha=Pig.return_pig(id))         
 
 
 @pig_bp.route('/pigs/pig/resgatarpig/<int:id>', methods=['POST'])
 @login_required
 def resgatar_valor(id):
-    if request.method == 'POST':
-        dados = request.form.to_dict()
-        print(dados, "id", id)
-        caixinhas = Pig.return_pigs()
-        for caixinha in caixinhas:
-            if caixinha['pig_id'] == id:
-                caixinha['valor'] = (caixinha['valor'] - int(dados['value']))
-                return render_template('pig.html', caixinha=caixinha)    
+    dados = request.form.to_dict()
+    result = Pig.resgatar_pig(dados, id)
+    if result == 0:
+        flash("Senha incorreta!")
+        return redirect(url_for("pig.return_resgatar_valor", id=id)) 
+    elif result == 1:
+        flash("Valor insuficiente para resgatar!")
+        return redirect(url_for("pig.return_resgatar_valor", id=id)) 
+    return redirect(url_for("pig.return_pig_page", id=id)) 
 
 
 # DELETAR CAIXINHAAAA

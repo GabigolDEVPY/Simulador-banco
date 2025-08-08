@@ -55,10 +55,17 @@ class Cliente():
         value = (BD_execute.execute_comand("SELECT user_found FROM users WHERE user_id = %s", session['user_id']))[0]['user_found']
         return value
     
+    @staticmethod
     def discount_user(value):
         BD_execute.execute_comand("UPDATE users SET user_found = user_found - %s WHERE user_id = %s", value, session["user_id"])
         return
+    
+    @staticmethod
+    def acrescent_user(value):
+        BD_execute.execute_comand("UPDATE users SET user_found = user_found + %s WHERE user_id = %s", value, session["user_id"])
+        return
 
+    @staticmethod
     def validate_senha(senha):
         if senha == BD_execute.execute_comand("SELECT user_password FROM users WHERE user_id = %s", session["user_id"])[0]["user_password"]:
             return 1

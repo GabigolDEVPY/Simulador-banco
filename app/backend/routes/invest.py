@@ -32,3 +32,4 @@ def return_ethereum_page():
 def return_dolar_page():
     dados = Get_value.puxar_dolar()
     return render_template("dolar.html", dados=dados)
+

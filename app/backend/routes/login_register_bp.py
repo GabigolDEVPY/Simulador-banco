@@ -18,7 +18,6 @@ def return_login():
     if 'login' in session:
         session.clear()
     dados = request.form.to_dict()
-    print(dados)
     if dados:
         result = Cliente.login(dados)
         if result:
@@ -26,7 +25,6 @@ def return_login():
             session['user_id'] = result['user_id']
             session['chave_pix'] = result['chave_pix']
             session['login'] = result['user_login']
-            print(session['chave_pix'])
             return render_template('home.html', dados=result)
         return redirect(url_for("login_register.return_home_error"))
     return jsonify('Dados Inválidos'), 404
@@ -39,7 +37,6 @@ def return_register_page():
 @login_register_bp.route('/register/user', methods=['POST'])
 def register_user():
     dados = request.form.to_dict()
-    print(dados)
     if dados:
         result = Cliente.register(dados)
         if result:

@@ -75,3 +75,4 @@ INSERT INTO user_notifications (user_id, title_notify, subtitle_notify) VALUES (
     "olha pixxxxxxxxxxx de 1000 reais zé"
     )
 
+INSERT INTO invest (user_id) VALUES (1);

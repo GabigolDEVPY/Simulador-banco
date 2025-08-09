@@ -21,6 +21,8 @@ class Cliente():
         comand = "INSERT INTO users (user_name, user_login, user_password, chave_pix) VALUES (%s, %s, %s, %s)"
         try:
             result = BD_execute.execute_comand(comand, dados['nome'], dados['login'], dados['senha'], dados['chave'])
+            id = BD_execute.execute_comand("SELECT user_id FROM users WHERE user_login = %s", dados["login"])[0]["user_id"]
+            result = BD_execute.execute_comand("INSERT INTO invest (user_id) VALUES (%s)", id)
         except Exception: 
             return None
         return result

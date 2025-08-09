@@ -1,4 +1,4 @@
--- Active: 1753586779735@@127.0.0.1@3306
+-- Active: 1754314133403@@127.0.0.1@3306@banco
 
 DROP TABLE users;
 
@@ -31,11 +31,11 @@ CREATE TABLE pigs (
     user_id INT,
     FOREIGN KEY (user_id) REFERENCES users(user_id),
     meta_pig DOUBLE,
-    total_bruto DOUBLE,
+    total_bruto DOUBLE DEFAULT 0,
     image_pig VARCHAR(60),
     nome_pig VARCHAR(30),
-    ganhos_total DOUBLE,
-    ultimos_ganhos_pig DOUBLE
+    ganhos_total DOUBLE DEFAULT 0,
+    ultimos_ganhos_pig DOUBLE DEFAULT 0
 );
 
 DROP TABLE pigs;

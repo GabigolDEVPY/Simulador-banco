@@ -8,7 +8,6 @@ from backend.routes.invest import invest_bp
 from backend.routes.pig import pig_bp
 from backend.routes.tigre import tigre_bp
 
-
 def CreateApp():
     app = Flask(__name__)
     app.secret_key = '82934bfd74g78ufd2b4ufbw4b'

@@ -41,10 +41,8 @@ class Pig:
     def resgatar_pig(dados, pig_id):
         validate = Cliente.validate_senha(dados["senha"])
         total_bruto = BD_execute.execute_comand("SELECT total_bruto FROM pigs WHERE pig_id = %s AND user_id = %s", pig_id, session["user_id"])[0]["total_bruto"]
-        print("totalllllllllll", total_bruto)
         if total_bruto >= float(dados["value"]):
             if validate:
-                print("validadoooooooooooooooooooooooooo")
                 comand = BD_execute.execute_comand("UPDATE pigs SET total_bruto = total_bruto - %s WHERE pig_id = %s AND user_id = %s", float((dados)["value"]), pig_id, session['user_id'])
                 Cliente.acrescent_user(float(dados["value"]))
                 return
@@ -54,7 +52,6 @@ class Pig:
     @staticmethod
     def deletar_pig(id):
         result = BD_execute.execute_comand("DELETE FROM pigs WHERE pig_id = %s AND user_id = %s", id, session["user_id"])    
-        print(result)
         return
     
 

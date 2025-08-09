@@ -29,8 +29,8 @@
         </div>
         <div class="final">
             <div class="valor" style="margin-top: 270px; margin-left: 25px;">
-                <label style="font-size: 18px;">Quantidade</label>
-                <input style="width: 250px;" class="money" type="number" placeholder="00,00">
+                <label style="font-size: 18px;">Valor</label>
+                <input id="valor" style="width: 250px;" class="money" type="number" placeholder="00,00">
             </div>
             <div style="margin-top: 120px;" class="direction">
                 <button onclick="abrirModal()" class="confirmar">Comprar</button>
@@ -42,8 +42,8 @@
     <div id="Comprar">
         <div class="conteudo">
             <h2>confirmar compra</h2>
-            <p style="margin-top: 10px;">Quantidade</p>
-            <p style="margin-top: 10px;">Valor</p>
+            <p id="QuantidadeModal" style="margin-top: 10px;">Quantidade</p>
+            <p id="ValorModal" style="margin-top: 10px;">Valor</p>
             <div style="margin-top: 80px;" class="direction">
                 <button onclick="fecharModal()" class="confirmar">Comprar</button>
                 <button onclick="fecharModal()"  class="confirmar">Cancelar</button>
@@ -65,6 +65,12 @@
 <!--Pop up-->    
     <script>
         function abrirModal() {
+            const valor = document.getElementById("valor").value;
+            const preco = {{ dados.preco }}
+            const quantidade = valor / preco
+            document.getElementById("QuantidadeModal").textContent = "Quantidade: " + quantidade.toFixed(6);
+            document.getElementById("ValorModal").textContent = "Valor R$: " + valor;
+
             document.getElementById('Comprar').style.display = 'flex';
         }
         function fecharModal() {

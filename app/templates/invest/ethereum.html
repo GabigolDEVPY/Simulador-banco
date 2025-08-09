@@ -65,6 +65,12 @@
 <!--Pop up-->    
     <script>
         function abrirModal() {
+            const valor = document.getElementById("valor").value;
+            const preco = {{ dados.preco }}
+            const quantidade = valor / preco
+            document.getElementById("QuantidadeModal").textContent = "Quantidade: " + quantidade.toFixed(6);
+            document.getElementById("ValorModal").textContent = "Valor R$: " + valor;
+
             document.getElementById('Comprar').style.display = 'flex';
         }
         function fecharModal() {

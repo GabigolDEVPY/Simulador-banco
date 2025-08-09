@@ -17,19 +17,19 @@
     <div class="meio-resto">
         <div class="infos" style="height: 90px;">
             <h5 >Total Investido</h5>
-            <h4 style="margin-top: 5px; font-weight:lighter;" >R$ 12000</h4>
+            <h4 style="margin-top: 5px; font-weight:lighter;" >R$ {{ criptos.total }}</h4>
         </div>
         <div class="infos" style="height: 50px;">
             <h5>Bitcoin</h5>
-            <h4 style="margin-top: 5px; font-weight:lighter; font-size:16px" >R$ 12000</h4>
+            <h4 style="margin-top: 5px; font-weight:lighter; font-size:16px" >R$ {{ criptos.bitcoin }}</h4>
         </div>
         <div class="infos" style="height: 50px;">
             <h5>Ethereum</h5>
-            <h4 style="margin-top: 5px; font-weight:lighter; font-size:16px" >R$ 12000</h4>
+            <h4 style="margin-top: 5px; font-weight:lighter; font-size:16px" >R$ {{ criptos.ethereum }}</h4>
         </div>
         <div class="infos" style="height: 50px; margin-bottom: 20px;">
             <h5>Dolar</h5>
-            <h4 style="margin-top: 5px; font-weight:lighter; font-size:16px"  >R$ 12000</h4>
+            <h4 style="margin-top: 5px; font-weight:lighter; font-size:16px"  >R$ {{ criptos.dolar }}</h4>
         </div>
         <div class="final">
             <a style="text-decoration: none;" href="{{ url_for('invest.return_bitcoin_page')}}">

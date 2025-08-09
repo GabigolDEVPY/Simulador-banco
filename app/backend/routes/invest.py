@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template
 from ..utils.request_api import Get_value
 from..utils.auth import login_required
+from..utils.invest import Create_class
 
 invest_bp = Blueprint('invest', __name__,template_folder='../../templates/invest')
 
@@ -8,7 +9,8 @@ invest_bp = Blueprint('invest', __name__,template_folder='../../templates/invest
 @invest_bp.route("/invest", methods=["GET"])
 @login_required
 def return_invest_page():
-    return render_template("invest.html")
+    criptos = Create_class()
+    return render_template("invest.html", criptos=criptos.__dict__)
 
 
 @invest_bp.route("/invest/bitcoin", methods=["GET"])

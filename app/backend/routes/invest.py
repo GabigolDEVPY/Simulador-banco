@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, request, url_for, redirect
 from ..utils.request_api import Get_value
 from..utils.auth import login_required
 from..utils.invest import Create_class
@@ -33,3 +33,7 @@ def return_dolar_page():
     dados = Get_value.puxar_dolar()
     return render_template("dolar.html", dados=dados)
 
+@invest_bp.route("/comprar", methods=["POST"])
+def comprar():
+    data = request.form.to_dict()
+    return redirect(url_for("invest.return_invest_page"))

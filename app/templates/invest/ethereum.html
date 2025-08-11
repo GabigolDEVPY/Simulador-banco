@@ -8,11 +8,11 @@
     <title>Ethereum</title>
 </head>
 <body>
-    <div class="nav-superior" style="justify-content: flex-start;" >
+    <div class="nav-superior" style="justify-content: flex-start;" >  
         <a href="{{ url_for('invest.return_invest_page') }}">
             <button style="margin-left: 0px;" class="button-return"></button>
         </a>
-            <h3 style="margin-top: 17px; margin-left:20px" >Ethereum</h3>
+        <h3 style="margin-top: 17px; margin-left:20px" >Ethereum</h3>
     </div>
     <div class="meio-resto">
         <div class="infos" style="height: 90px;">
@@ -29,8 +29,8 @@
         </div>
         <div class="final">
             <div class="valor" style="margin-top: 270px; margin-left: 25px;">
-                <label style="font-size: 18px;">Quantidade</label>
-                <input style="width: 250px;" class="money" type="number" placeholder="00,00">
+                <label style="font-size: 18px;">Valor</label>
+                <input id="valor" style="width: 250px;" class="money" type="number" placeholder="00,00" required>
             </div>
             <div style="margin-top: 120px;" class="direction">
                 <button onclick="abrirModal()" class="confirmar">Comprar</button>
@@ -41,13 +41,18 @@
 
     <div id="Comprar">
         <div class="conteudo">
-            <h2>confirmar compra</h2>
-            <p style="margin-top: 10px;">Quantidade</p>
-            <p style="margin-top: 10px;">Valor</p>
-            <div style="margin-top: 80px;" class="direction">
-                <button onclick="fecharModal()" class="confirmar">Comprar</button>
-                <button onclick="fecharModal()"  class="confirmar">Cancelar</button>
-            </div>   
+            <form action="{{ url_for('invest.comprar') }}" method="post">
+                <h2>confirmar compra</h2>
+                <p id="QuantidadeModal" style="margin-top: 10px;">Quantidade</p>
+                <p id="ValorModal" style="margin-top: 10px;">Valor</p>
+                <input id="ValueQuantidade" style="display: none;" name="quantidade" type="text">
+                <input id="ValueValor" style="display: none;" name="valor" type="valor" type="text"> 
+                <input style="display: none;" name="cripto" type="valor" type="text" value="ethereum"> 
+                <div style="margin-top: 80px;" class="direction">
+                    <button type="submit" onclick="fecharModal()" class="confirmar">Comprar</button>
+                    <button onclick="fecharModal()"  class="confirmar">Cancelar</button>
+                </div>   
+            </form>
         </div>
     </div>
 
@@ -70,9 +75,11 @@
             const quantidade = valor / preco
             document.getElementById("QuantidadeModal").textContent = "Quantidade: " + quantidade.toFixed(6);
             document.getElementById("ValorModal").textContent = "Valor R$: " + valor;
-
+            document.getElementById("ValueQuantidade").value = valor;
+            document.getElementById("ValueValor").value = quantidade;
             document.getElementById('Comprar').style.display = 'flex';
         }
+
         function fecharModal() {
             document.getElementById('Comprar').style.display = "none"
         }

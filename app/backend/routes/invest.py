@@ -36,4 +36,6 @@ def return_dolar_page():
 @invest_bp.route("/comprar", methods=["POST"])
 def comprar():
     data = request.form.to_dict()
+    Criptos = Create_class()
+    Criptos.add_cripto(data)
     return redirect(url_for("invest.return_invest_page"))

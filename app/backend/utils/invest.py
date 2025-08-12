@@ -11,11 +11,10 @@ class Criptos():
     
     def add_cripto(self, dados : dict) -> int:
         dados = dados
-        print(dados)
         cripto = str(dados["cripto"]+"_invest")
         value_user = Cliente.value_user()
         if float(value_user) >= float(dados["valor"]):
-            result = BD_execute.execute_comand(f"UPDATE invest SET {cripto} = %s WHERE user_id = %s", dados["quantidade"], session["user_id"])
+            result = BD_execute.execute_comand(f"UPDATE invest SET {cripto} = {cripto} + %s WHERE user_id = %s", dados["quantidade"], session["user_id"])
             Cliente.discount_user(float(dados["valor"]))
             return
         return 1

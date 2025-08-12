@@ -19,21 +19,27 @@ def return_invest_page():
 @login_required
 def return_bitcoin_page():
     dados = Get_value.puxar_cripto('https://api.coingecko.com/api/v3/coins/bitcoin')
-    return render_template("bitcoin.html", dados=dados)
+    criptos = (Create_class()).__dict__
+    criptos['bruto'] = float(criptos["bitcoin"]) * float(dados["preco"])
+    return render_template("bitcoin.html", dados=dados, criptos=criptos)
 
 
 @invest_bp.route("/invest/ethereum", methods=["GET"])
 @login_required
 def return_ethereum_page():
     dados = Get_value.puxar_cripto('https://api.coingecko.com/api/v3/coins/ethereum')
-    return render_template("ethereum.html", dados=dados)
+    criptos = (Create_class()).__dict__
+    criptos['bruto'] = float(criptos["ethereum"]) * float(dados["preco"])
+    return render_template("ethereum.html", dados=dados, criptos=criptos)
 
 
 @invest_bp.route("/invest/dolar", methods=["GET"])
 @login_required
 def return_dolar_page():
     dados = Get_value.puxar_dolar()
-    return render_template("dolar.html", dados=dados)
+    criptos = (Create_class()).__dict__
+    criptos['bruto'] = float(criptos["dolar"]) * float(dados["preco"])
+    return render_template("dolar.html", dados=dados, criptos=criptos)
 
 @invest_bp.route("/comprar", methods=["POST"])
 def comprar():

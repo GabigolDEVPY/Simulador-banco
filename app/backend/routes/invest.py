@@ -50,3 +50,14 @@ def comprar():
         flash("Valor insuficiente na carteira")
         return redirect(url_for("invest.return_invest_page"))
     return redirect(url_for("invest.return_invest_page"))
+
+@invest_bp.route("/vender", methods=["POST"])
+def vender():
+    data = request.form.to_dict()
+    print(data)
+    Criptos = Create_class()
+    result =  Criptos.remove_cripto(data)
+    if result == 1:
+        flash("Valor insuficiente na carteira de criptos")
+        return redirect(url_for("invest.return_invest_page"))
+    return redirect(url_for("invest.return_invest_page"))

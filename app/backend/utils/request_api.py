@@ -25,9 +25,9 @@ class Get_value():
             dados = response.json()['USDBRL']
             print(dados)
             dados = {
-                "preco": dados['bid'],
-                "maximo": dados['high'],
-                "minimo": dados['low']
+                "preco": float(dados['bid']),
+                "maximo": float(dados['high']),
+                "minimo": float(dados['low'])
             }
             return dados
 

@@ -21,11 +21,11 @@
             <h4 style="margin-top: 5px; font-weight:lighter;" >Qtd {{ '%.7f' % criptos.bitcoin }}</h4>
             <h4 style="margin-top: 5px; font-weight:lighter;" >R$ {{ '%.2f' % criptos.bruto }}</h4><br>
             <h4>Bitcoin agora</h4>
-            <h4 style="margin-top: 5px; font-weight:lighter;" >R$ {{ dados.preco }}</h4><br>
+            <h4 style="margin-top: 5px; font-weight:lighter;" >R$ {{ '%.2f' % dados.preco }}</h4><br>
             <h4>Mínima hoje</h4>
-            <h5 style="margin-top: 5px; font-weight:lighter;" >R$ {{ dados.minimo }}</h5>
+            <h5 style="margin-top: 5px; font-weight:lighter;" >R$ {{ '%.2f' % dados.minimo }}</h5>
             <h4 style="margin-top: 10px;">Máxima hoje</h4>
-            <h5 style="margin-top: 5px; font-weight:lighter;" >R$ {{ dados.maximo }}</h5>
+            <h5 style="margin-top: 5px; font-weight:lighter;" >R$ {{ '%.2f' % dados.maximo }}</h5>
         </div>
         <div class="final">
             <div class="valor" style="margin-top: 270px; margin-left: 25px;">
@@ -33,8 +33,8 @@
                 <input id="valor" style="width: 250px;" class="money" type="number" placeholder="00,00" required>
             </div>
             <div style="margin-top: 120px;" class="direction">
-                <button onclick="abrirModal()" class="confirmar">Comprar</button>
-                <button onclick="abrirModalVender()" class="confirmar">Vender</button>
+                <button type="submit" onclick="abrirModal()" class="confirmar">Comprar</button>
+                <button type="submit" onclick="abrirModalVender()" class="confirmar">Vender</button>
             </div>   
         </div>
     </div>
@@ -47,7 +47,7 @@
                 <p id="ValorModal" style="margin-top: 10px;">Valor</p>
                 <input id="ValueValor" style="display: none;" name="quantidade" type="text">
                 <input id="ValueQuantidade" style="display: none;" name="valor" type="valor" type="text"> 
-                <input style="display: none;" name="cripto" type="valor" type="text" value="bitcoin"> 
+                <input style="display: none;" name="cripto" type="text" value="bitcoin"> 
                 <div style="margin-top: 80px;" class="direction">
                     <button type="submit" onclick="fecharModal()" class="confirmar">Comprar</button>
                     <button onclick="fecharModal()"  class="confirmar">Cancelar</button>
@@ -58,13 +58,18 @@
 
     <div id="Vender">
         <div class="conteudo">
-            <h2>Confirmar venda</h2>
-            <p style="margin-top: 10px;">Quantidade</p>
-            <p style="margin-top: 10px;">Valor</p>
-            <div style="margin-top: 80px;" class="direction">
-                <button onclick="fecharModalVender()" class="confirmar">Vender</button>
-                <button onclick="fecharModalVender()"  class="confirmar">Cancelar</button>
-            </div>   
+            <form action="{{ url_for('invest.vender') }}" method="post">
+                <h2>confirmar compra</h2>
+                <p id="QuantidadeModalVender" style="margin-top: 10px;">Quantidade</p>
+                <p id="ValorModalVender" style="margin-top: 10px;">Valor</p>
+                <input id="VenderValor" style="display: none;" name="quantidade" type="text">
+                <input id="VenderQuantidade" style="display: none;" name="valor" type="valor" type="text"> 
+                <input style="display: none;" name="cripto" type="valor" type="text" value="bitcoin"> 
+                <div style="margin-top: 80px;" class="direction">
+                    <button type="submit" onclick="fecharModal()" class="confirmar">Vender</button>
+                    <button onclick="fecharModal()"  class="confirmar">Cancelar</button>
+                </div>   
+            </form>
         </div>
     </div>
 <!--Pop up-->    
@@ -84,10 +89,14 @@
             document.getElementById('Comprar').style.display = "none"
         }
         function abrirModalVender() {
+            const valor = document.getElementById("valor").value;
+            const preco = {{ dados.preco }}
+            const quantidade = valor / preco
+            document.getElementById("QuantidadeModalVender").textContent = "Quantidade: " + quantidade.toFixed(6);
+            document.getElementById("ValorModalVender").textContent = "Valor R$: " + valor;
+            document.getElementById("VenderQuantidade").value = valor;
+            document.getElementById("VenderValor").value = quantidade;
             document.getElementById('Vender').style.display = 'flex';
-        }
-        function fecharModalVender() {
-            document.getElementById('Vender').style.display = "none"
         }
     </script>
 </body>

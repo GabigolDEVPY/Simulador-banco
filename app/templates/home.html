@@ -30,7 +30,7 @@
     <div class="meio-resto">
         <div class="infos">
             <h5 >Saldo em conta</h5>
-            <h4 style="margin-top: 5px; font-weight:lighter;" >R$ {{ dados.user_found }}</h4>
+            <h4 style="margin-top: 5px; font-weight:lighter;" >R$ {{ '%.2f' % dados.user_found }}</h4>
         </div>
         <div class="options-box">
             <a href="{{ url_for('transfer.return_transfer_page') }}">

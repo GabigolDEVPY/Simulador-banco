@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, url_for, redirect
 from ..utils.request_api import Get_value
 from..utils.auth import login_required
 from..utils.invest import Create_class
+from..utils.cliente import Cliente
 
 invest_bp = Blueprint('invest', __name__,template_folder='../../templates/invest')
 
@@ -9,8 +10,9 @@ invest_bp = Blueprint('invest', __name__,template_folder='../../templates/invest
 @invest_bp.route("/invest", methods=["GET"])
 @login_required
 def return_invest_page():
+
     criptos = Create_class()
-    return render_template("invest.html", criptos=criptos.__dict__)
+    return render_template("invest.html", criptos=criptos.__dict__, bruto=Cliente().value_user())
 
 
 @invest_bp.route("/invest/bitcoin", methods=["GET"])

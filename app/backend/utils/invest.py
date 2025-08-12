@@ -17,7 +17,8 @@ class Criptos():
         if float(value_user) >= float(dados["valor"]):
             result = BD_execute.execute_comand(f"UPDATE invest SET {cripto} = %s WHERE user_id = %s", dados["quantidade"], session["user_id"])
             Cliente.discount_user(float(dados["valor"]))
-        return
+            return
+        return 1
 
 def Create_class():
     data = BD_execute.execute_comand("SELECT * FROM invest WHERE user_id = %s", session["user_id"])[0]

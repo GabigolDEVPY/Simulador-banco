@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, url_for, redirect
+from flask import Blueprint, render_template, request, url_for, redirect, flash
 from ..utils.request_api import Get_value
 from..utils.auth import login_required
 from..utils.invest import Create_class
@@ -39,5 +39,8 @@ def return_dolar_page():
 def comprar():
     data = request.form.to_dict()
     Criptos = Create_class()
-    Criptos.add_cripto(data)
+    result =  Criptos.add_cripto(data)
+    if result == 1:
+        flash("Valor insuficiente na carteira")
+        return redirect(url_for("invest.return_invest_page"))
     return redirect(url_for("invest.return_invest_page"))
